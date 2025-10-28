@@ -1,0 +1,9 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"></sly>
+<div class="cq-placeholder" data-emptytext="${component.title @ context='attribute'}" data-sly-test="${wcmmode.edit}"></div>
+<HeadingTag 
+            key="${index}"
+            class="font-bold text-gray-900 dark:text-gray-100 mb-4"
+          >
+            ${section.value}
+          </HeadingTag>
+<sly data-sly-call="${template.placeholder @ isEmpty=false}"></sly>

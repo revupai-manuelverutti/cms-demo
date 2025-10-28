@@ -1,0 +1,8 @@
+<span data-component_type="${component.name}" 
+    data-component_id="${analyticsdata.uniqueId}" 
+    data-component_title="${analyticsdata.title}">
+<div data-sly-use.template="unsw-common/components/content/image/v2/image-template.html">
+    <div data-sly-set.style="${'{0} {1}' @ format=['full-width', properties.articleStyle]}"
+         data-sly-call="${template.imagetemplate @ style=style, quoteText=properties.quoteText, articleStyle=properties.articleStyle}"></div>
+</div>
+</span>

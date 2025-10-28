@@ -1,0 +1,62 @@
+{
+  "title": "Global Tech University",
+  "path": "/university",
+  "description": "Welcome to Global Tech University - A leading institution in innovation, technology, and academic excellence. Explore our programs, meet our faculty, and discover opportunities for your future.",
+  "sections": [
+    {
+      "type": "heading",
+      "value": "Welcome to Global Tech Universityss"
+    },
+    {
+      "type": "text",
+      "value": "Global Tech University is a world-class institution dedicated to excellence in education, research, and innovation. Founded in 1885, we have been shaping the future for over a century. Our diverse community of scholars, researchers, and students work together to address the world's most pressing challenges through cutting-edge programs in science, technology, engineering, arts, and mathematics.",
+      "placeholder": "",
+      "label": "",
+      "title": "",
+      "description": "",
+      "imageUrl": "",
+      "linkUrl": ""
+    },
+    {
+      "type": "image",
+      "value": "",
+      "placeholder": "",
+      "label": "",
+      "title": "",
+      "description": "",
+      "imageUrl": "",
+      "linkUrl": "",
+      "src": "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a",
+      "alt": "Campus building with students"
+    },
+    {
+      "type": "searchbar",
+      "value": "",
+      "items": [],
+      "placeholder": "Search for a Degree"
+    },
+    {
+      "type": "card",
+      "value": "",
+      "placeholder": "",
+      "label": "",
+      "title": "Your carrear with Us",
+      "description": "Join Us sksksksksksk\n\n",
+      "imageUrl": "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a",
+      "linkUrl": ""
+    },
+    {
+      "type": "list",
+      "value": "",
+      "items": [
+        "Join Us sksksksksksk",
+        "2",
+        "2",
+        "2",
+        "2"
+      ]
+    }
+  ],
+  "createdAt": "2025-10-28T00:44:02.099Z",
+  "updatedAt": "2025-11-05T03:06:34.518Z"
+}

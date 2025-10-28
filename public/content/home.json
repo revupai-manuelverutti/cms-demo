@@ -1,0 +1,46 @@
+{
+  "title": "About",
+  "path": "/home",
+  "description": "Information about the platform and its capabilities",
+  "sections": [
+    {
+      "type": "heading",
+      "value": "About This Platform",
+      "level": 1
+    },
+    {
+      "type": "text",
+      "value": "This platform provides a streamlined approach to content management, combining modern web technologies with intuitive administrative controls. The system enables seamless content creation, editing, and management through a user-friendly interface."
+    },
+    {
+      "type": "heading",
+      "value": "Platform Overview",
+      "level": 2
+    },
+    {
+      "type": "text",
+      "value": "Built with a focus on simplicity and efficiency, this content management system offers developers and content creators a flexible solution for managing web content without unnecessary complexity."
+    },
+    {
+      "type": "heading",
+      "value": "Technical Implementation",
+      "level": 2
+    },
+    {
+      "type": "list",
+      "items": [
+        "Next.js App Router for routing",
+        "TypeScript for enhanced code quality",
+        "Responsive styling with TailwindCSS",
+        "File-based content storage system",
+        "React-based state management"
+      ]
+    },
+    {
+      "type": "text",
+      "value": "End Demo"
+    }
+  ],
+  "createdAt": "2024-01-01T00:00:00.000Z",
+  "updatedAt": "2025-11-08T00:54:03.888Z"
+}

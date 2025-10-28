@@ -1,0 +1,13 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"></sly>
+<div class="cq-placeholder" data-emptytext="${component.title @ context='attribute'}" data-sly-test="${wcmmode.edit}"></div>
+<span
+      data-component_type=<p class="mt-2 text-sm text-gray-600 italic" data-sly-test="${properties.componentType}
+      data-component_id="${properties.componentId}"
+      data-component_title="${properties.componentTitle}"
+    >
+      <div class="${styleClass}">
+        <img properties.src=${properties.src} properties.alt=${properties.alt} class="w-full h-auto" />
+        ${properties.quoteText}">${properties.quoteText}</p>
+      </div>
+    </span>
+<sly data-sly-call="${template.placeholder @ isEmpty=false}"></sly>

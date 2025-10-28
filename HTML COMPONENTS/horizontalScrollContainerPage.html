@@ -1,0 +1,11 @@
+<div data-sly-use.horizontalContainer="au.edu.unsw.common.core.models.HorizontalScrollContainerModel" class="horizontal-scroll" data-sly-test="${horizontalContainer.items.size > 0}">
+<div class="${wcmmode.edit ? 'authorview' : 'slider'}" >
+    <div data-sly-repeat="${horizontalContainer.items}" data-sly-resource="${item.name}" data-sly-unwrap="${!wcmmode.edit}">${item.name}</div>
+</div>
+<div class="prev-next-container hide">
+	<button type="button" class="prev" aria-label="Previous tab"></button>
+      <button type="button" class="next" aria-label="Next tab"></button>
+</div>
+</div>
+<sly data-sly-resource="${resource.path @ resourceType='wcm/foundation/components/parsys/newpar', appendPath='/*', decorationTagName='div', cssClassName='new section aem-Grid-newComponent'}"
+     data-sly-test="${(wcmmode.edit || wcmmode.preview) && horizontalContainer.items.size < 1}"></sly>

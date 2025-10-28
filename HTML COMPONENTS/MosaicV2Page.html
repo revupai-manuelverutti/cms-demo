@@ -1,0 +1,189 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+  data-sly-use.mosaic="au.edu.unsw.common.core.models.MosaicV2"
+  data-sly-use.picture="unsw-common/components/templates/picture.html"
+  data-sly-use.configPageModel="au.edu.unsw.common.core.models.SitewideConfigModel"
+  data-sly-test.configPageModelProps="${configPageModel.properties}"
+  data-sly-use.styleModel="com.adobe.cq.wcm.style.ComponentStyleInfo"
+  data-sly-test.applyCustomBackground1="${styleModel.appliedCssClasses == 'custom' && configPageModelProps.mosaicV2CustomColour1}"
+  data-sly-test.applyCustomBackground2="${styleModel.appliedCssClasses == 'custom' && configPageModelProps.mosaicV2CustomColour2}">
+</sly>
+
+<sly data-sly-test.hasContent="${mosaic.tiles.hasChildren}">
+  <section class="cmp-mosaic-v2" data-cmp-is="cmp-mosaic-v2">
+    <div class="cmp-mosaic-v2__tiles" data-sly-list="${mosaic.tiles.listChildren}">
+      <div class="cmp-mosaic-v2__tile-wrapper cmp-mosaic-v2__tile-wrapper-${itemList.index}">
+        <!-- Hero tile -->
+        <div class="cmp-mosaic-v2-tile cmp-mosaic-v2-tile--hero ${item.overlay ? 'cmp-mosaic-v2-tile--overlay' : ''}"
+          data-sly-test="${item.tiletype == 'tile-type--hero'}">
+          <sly data-sly-use.picture="unsw-common/components/templates/picture.html">
+            <sly data-sly-test.useDAM="${item.altValueFromDAM}"
+              data-sly-call="${picture.template @ src=item.fileReference, crop='square', widths='700,1170,1280,1920', mobileWidth='700'}">
+            </sly>
+            <sly data-sly-test="${!useDAM}"
+              data-sly-call="${picture.template @ src=item.fileReference, alt=item.alt, crop='square', widths='700,1170,1280,1920', mobileWidth='700'}">
+            </sly>
+          </sly>
+          <div class="cmp-mosaic-v2-tile__image-overlay"></div>
+          <div class="cmp-mosaic-v2-tile__text-content">
+            <div class="cmp-mosaic-v2-tile__heading-wrapper">
+              <div class="cmp-mosaic-v2-tile__heading" style="${applyCustomBackground1 ? 'background-color:' : '' @ context='text'}
+                 ${applyCustomBackground1 ? configPageModelProps.mosaicV2CustomColour1 : '' @ context='styleToken'}">
+                ${item.heading}
+              </div>
+            </div>
+            <sly data-sly-test="${item.introText}">
+              <div class="cmp-mosaic-v2-tile__intro-text">
+                ${item.introText}
+              </div>
+            </sly>
+          </div>
+          <a href="${item.ctaLink}" target="${item.ctaNewTab ? '_blank' : '_self'}"
+            class="cmp-mosaic-v2-tile__cta uds-brand-button light fill border large"
+            data-sly-use.linkId="${'au.edu.unsw.common.core.utils.LinkIdGenerator' @  href=item.ctaLink}"
+            data-click_category="${component.name}" data-click_id="${linkId.id}"
+            data-click_title="${analyticsdata.title}" data-click_name="${item.ctaLabel}">
+            <div class="inner">
+              <div class="text">${item.ctaLabel}</div>
+              <span class="cmp-mosaic-v2-tile__cta-icon"></span>
+            </div>
+          </a>
+        </div>
+        <!-- Icon tile -->
+        <div class="cmp-mosaic-v2-tile cmp-mosaic-v2-tile--icon" data-sly-test="${item.tiletype == 'tile-type--icon'}"
+          data-sly-set.setCustomBackground1="${applyCustomBackground1 && itemList.index == 1}" style="${setCustomBackground1 ? 'background-color:' : '' @ context='text'}
+                 ${setCustomBackground1 ? configPageModelProps.mosaicV2CustomColour1 : '' @ context='styleToken'}"
+          tabindex="0">
+          <div class="cmp-mosaic-v2-tile__content">
+            <sly data-sly-use.picture="unsw-common/components/templates/picture.html">
+              <sly data-sly-test.decorativeImage="${item.isImageDecorative}"
+                data-sly-call="${picture.template @ src=item.fileReference, decorative=true, crop='basic', widths='335,700'}">
+              </sly>
+              <sly data-sly-test="${!decorativeImage}">
+                <sly data-sly-test.useDAM="${item.altValueFromDAM}"
+                  data-sly-call="${picture.template @ src=item.fileReference, crop='basic', widths='335,700'}"></sly>
+                <sly data-sly-test="${!useDAM}"
+                  data-sly-call="${picture.template @ src=item.fileReference, alt=item.alt, crop='basic', widths='335,700'}">
+                </sly>
+              </sly>
+            </sly>
+
+            <div class="cmp-mosaic-v2-tile__heading-wrapper">
+              <div class="cmp-mosaic-v2-tile__heading">${item.heading}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content tile -->
+        <div class="cmp-mosaic-v2-tile cmp-mosaic-v2-tile--content"
+          data-sly-set.setCustomBackground1="${applyCustomBackground1 && itemList.index == 3}"
+          data-sly-set.setCustomBackground2="${applyCustomBackground2 && (itemList.index == 2 || itemList.index == 4)}"
+          style="${(setCustomBackground1 || setCustomBackground2) ? 'background-color:' : '' @ context='text'}
+                 ${setCustomBackground1 ? configPageModelProps.mosaicV2CustomColour1 : (setCustomBackground2 ? configPageModelProps.mosaicV2CustomColour2 : '') @ context='styleToken'}"
+          data-sly-test="${item.tiletype == 'tile-type--content'}">
+          <div class="cmp-mosaic-v2-tile__text-content">
+            <sly data-sly-test="${item.preheading}">
+              <div class="cmp-mosaic-v2-tile__preheading">
+                ${item.preheading}
+              </div>
+            </sly>
+            <div class="cmp-mosaic-v2-tile__heading">${item.heading}</div>
+            <sly data-sly-test="${item.introText}">
+              <div class="cmp-mosaic-v2-tile__intro-text">
+                ${item.introText}
+              </div>
+            </sly>
+          </div>
+          <a href="${item.ctaLink}" target="${item.ctaNewTab ? '_blank' : '_self'}" class="cmp-mosaic-v2-tile__cta"
+            data-sly-use.linkId="${'au.edu.unsw.common.core.utils.LinkIdGenerator' @  href=item.ctaLink}"
+            data-click_category="${component.name}" data-click_id="${linkId.id}"
+            data-click_title="${analyticsdata.title}" data-click_name="${item.ctaLabel}" tabindex="0">
+            <div class="cmp-mosaic-v2-tile__cta-label-wrapper">
+              <span class="cmp-mosaic-v2-tile__cta-label">${item.ctaLabel}</span>
+            </div>
+            <div class="cmp-mosaic-v2-tile__cta-icon-wrapper">
+              <span class="cmp-mosaic-v2-tile__cta-icon"></span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Profile tile -->
+        <div class="cmp-mosaic-v2-tile cmp-mosaic-v2-tile--profile"
+          data-sly-set.setCustomBackground1="${applyCustomBackground1 && itemList.index == 3}"
+          data-sly-set.setCustomBackground2="${applyCustomBackground2 && (itemList.index == 2 || itemList.index == 4)}"
+          style="${(setCustomBackground1 || setCustomBackground2) ? 'background-color:' : '' @ context='text'}
+                 ${setCustomBackground1 ? configPageModelProps.mosaicV2CustomColour1 : (setCustomBackground2 ? configPageModelProps.mosaicV2CustomColour2 : '') @ context='styleToken'}"
+          data-sly-test="${item.tiletype == 'tile-type--profile'}">
+          <div class="cmp-mosaic-v2-tile__top-content">
+            <div class="cmp-mosaic-v2-tile__profile">
+              <div class="cmp-mosaic-v2-tile__profile-left">
+                <sly data-sly-use.picture="unsw-common/components/templates/picture.html">
+                  <sly data-sly-test.useDAM="${item.altValueFromDAM}"
+                    data-sly-call="${picture.template @ src=item.fileReference, crop='square', widths='335,700'}"></sly>
+                  <sly data-sly-test="${!useDAM}"
+                    data-sly-call="${picture.template @ src=item.fileReference, alt=item.alt, crop='square', widths='335,700'}">
+                  </sly>
+                </sly>
+              </div>
+              <div class="cmp-mosaic-v2-tile__profile-right">
+                <div class="cmp-mosaic-v2-tile__profile-name">
+                  ${item.profileName}
+                </div>
+                <div class="cmp-mosaic-v2-tile__subheading">
+                  ${item.subheading}
+                </div>
+              </div>
+            </div>
+            <div class="cmp-mosaic-v2-tile__intro-text">${item.introText}</div>
+          </div>
+
+          <div class="cmp-mosaic-v2-tile__bottom-content">
+            <sly data-sly-test="${item.faculty}">
+              <div class="cmp-mosaic-v2-tile__faculty" data-faculty-data="${item.faculty}">
+                <img class="cmp-mosaic-v2-tile__faculty-icon-image" />
+                <div class="cmp-mosaic-v2-tile__faculty-name"></div>
+              </div>
+            </sly>
+            <a href="${item.ctaLink}" target="${item.ctaNewTab ? '_blank' : '_self'}" class="cmp-mosaic-v2-tile__cta"
+              data-sly-use.linkId="${'au.edu.unsw.common.core.utils.LinkIdGenerator' @  href=item.ctaLink}"
+              data-click_category="${component.name}" data-click_id="${linkId.id}"
+              data-click_title="${analyticsdata.title}" data-click_name="${item.ctaLabel}" tabindex="0">
+              <div class="cmp-mosaic-v2-tile__cta-label-wrapper">
+                <span class="cmp-mosaic-v2-tile__cta-label">${item.ctaLabel}</span>
+              </div>
+              <div class="cmp-mosaic-v2-tile__cta-icon-wrapper">
+                <span class="cmp-mosaic-v2-tile__cta-icon"></span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Image tile -->
+        <div class="cmp-mosaic-v2-tile cmp-mosaic-v2-tile--image"
+          data-sly-test="${item.tiletype == 'tile-type--image'}">
+          <sly data-sly-use.picture="unsw-common/components/templates/picture.html">
+            <sly data-sly-test.useDAM="${item.altValueFromDAM}"
+              data-sly-call="${picture.template @ src=item.fileReference, crop='square', widths='700,1170,1280,1920', mobileWidth='700'}">
+            </sly>
+            <sly data-sly-test="${!useDAM}"
+              data-sly-call="${picture.template @ src=item.fileReference, alt=item.alt, crop='square', widths='700,1170,1280,1920', mobileWidth='700'}">
+            </sly>
+          </sly>
+        </div>
+      </div>
+    </div>
+
+    <div class="cmp-mosaic-v2__controls">
+      <div class="cmp-mosaic-v2__pagination"></div>
+      <div class="cmp-mosaic-v2__prev-next">
+        <button type="button" class="cmp-mosaic-v2__button-prev">
+          <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="cmp-mosaic-v2__button-next">
+          <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+</sly>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!hasContent}"></sly>

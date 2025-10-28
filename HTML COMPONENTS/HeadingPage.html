@@ -1,0 +1,9 @@
+<span data-component_type="${component.name}"
+      data-component_id="${analyticsdata.uniqueId}"
+      data-component_title="${analyticsdata.title}">
+  <h2 id="${analyticsdata.uniqueId}" data-sly-element="${properties.level}" class="${properties.alignment}">
+      ${properties.heading @ context = 'html'}
+  </h2>
+</span>
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html" data-sly-test.prop="${properties.heading}"/>
+<sly data-sly-call="${templates.placeholder @ isEmpty = !prop}"></sly>

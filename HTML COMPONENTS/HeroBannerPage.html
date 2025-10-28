@@ -1,0 +1,74 @@
+<div data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.button="unsw-common/components/templates/button.html"
+     data-sly-test.hasContent="${properties.image}"
+     class="hero-banner-callout${properties.overlay ?
+         ' hero-banner-callout--overlay' : ''}"
+     data-component_type="${component.name}"
+     data-component_id="${analyticsdata.uniqueId}"
+     data-component_title="${analyticsdata.title}"
+    data-sly-set.articlePath="${properties.articlePagePath || currentPage.path}"
+    data-sly-use.adapter="${'au.edu.unsw.common.core.utils.NewsroomArticlePageAdapter' @ path=articlePath}"
+    data-sly-set.article="${adapter.article}">
+    <div class="hero-banner-callout__inner">
+        <sly data-sly-use.picture="unsw-common/components/templates/picture.html">
+            <sly data-sly-call="${picture.template @
+                src=(properties.image || article.image),
+                alt=((properties.altValueFromDAM ? '' : properties.alt) || article.imageAlt),
+                imgStyle='hero-banner-callout__background-image hero-banner-callout__background-image--desktop',
+                crop='basic',
+                widths='335,700,1280,1920'
+            }">
+            </sly>
+            <sly data-sly-call="${picture.template @
+                src=(properties.image || article.image),
+                alt=((properties.altValueFromDAM ? '' : properties.alt) || article.imageAlt),
+                imgStyle='hero-banner-callout__background-image hero-banner-callout__background-image--mobile',
+                crop='portrait',
+                widths='335,700,1280,1920'
+            }">
+            </sly>
+        </sly>
+        <div class="hero-banner-callout__background-overlay"></div>
+        <div class="hero-banner-callout__content">
+            <div class="hero-banner-callout__content-inner">
+                <div class="hero-banner-callout__text">
+                    <a data-sly-unwrap="${!properties.articlePagePath}"
+                       class="hero-banner-callout__heading-anchor"
+                       data-click_category="${component.name}"
+                       data-sly-use.linkId="${'au.edu.unsw.common.core.utils.LinkIdGenerator' @  href=properties.articlePagePath}"
+                       data-click_id="${linkId.id}"
+                       data-click_title="${analyticsdata.title}"
+                       data-click_name="${properties.title || article.title}"
+                       href="${properties.articlePagePath @ extension='html'}" aria-label="Article page">
+                        <h1 class="hero-banner-callout__heading">
+                            <span><span><span>${properties.title || article.title}</span></span></span>
+                        </h1>
+                    </a>
+                    <div data-sly-test="${article.articleDate}"
+                         class="hero-banner-callout__publish-time"
+                         data-publish-time="${article.articleDate}"><span></span></div>
+                </div>
+                <!--/* Intruducing button here (render if configured) */-->
+                <sly data-sly-call="${button.template @ copy=properties.buttonCopy || 'Read the article',
+                                                        color=properties.buttonColor || 'primary',
+                                                        buttonStyle=properties.buttonStyle || 'fill border',
+                                                        size='medium', link=properties.articlePagePath}"
+                     data-sly-test="${properties.articlePagePath && properties.showArticleDetails}"></sly>
+                <img class="hero-banner-callout__play-icon" alt="Play icon"
+                     src="/etc.clientlibs/unsw-common/clientlibs/unsw-uds-assets/site/styles/src/assets/resources/illustrations/icon-play-circle.svg" />
+            </div>
+        </div>
+        <div class="hero-banner__social-button-container"
+             data-sly-test="${pageProperties.showSocialShareOnHeroBanner}">
+            <button class="hero-banner__social-button" aria-expanded="false" aria-controls="hero-banner-social">
+                <img class="hero-banner__social-icon" alt="Expand social share" src="/etc.clientlibs/unsw-common/clientlibs/unsw-uds-assets/site/styles/src/assets/resources/illustrations/icon-share-black.svg" />
+                <img class="hero-banner__social-icon-close" alt="Close social share" src="/etc.clientlibs/unsw-common/clientlibs/unsw-uds-assets/site/styles/src/assets/resources/illustrations/cross-thin.svg" />
+            </button>
+            <div class="hero-banner__social-share-container" id="hero-banner-social"></div>
+        </div>
+    </div>
+    <div class="hero-banner-callout__copyright"
+         data-sly-test.copyright="${properties.copyright}">${copyright @ context='html'}</div>
+</div>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=!hasContent, classAppend='cmp-hero-banner'}"></sly>

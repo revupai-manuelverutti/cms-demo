@@ -1,0 +1,33 @@
+<div class="cq-placeholder" data-emptytext="${component.title @ context='attribute'}"
+     data-sly-test="${wcmmode.edit}"></div>
+<sly data-sly-use.link="${'au.edu.unsw.common.core.models.Url' @ url = properties.link}"></sly>
+<sly data-component_id="${analyticsdata.uniqueId}"
+     data-component_title="${analyticsdata.title}"
+     data-component_type="${component.name}">
+    <a class="author-v3 author-v3--long-variation"
+       data-sly-use.linkId="${'au.edu.unsw.common.core.utils.LinkIdGenerator' @ href=link.formattedUrl}"
+       data-click_category="${component.name}"
+       data-click_id="${linkId.id}"
+       data-click_name="${properties.title}"
+       data-click_title="${analyticsdata.title}"
+       data-sly-unwrap="${!properties.link}"
+       href="${link.formattedUrl}">
+        <div class="author-v3 author-v3--long-variation" data-sly-unwrap="${properties.link}">
+            <div class="author-v3__icon-container" data-sly-test="${properties.fileReference}">
+                <div class="author-v3__icon-inner">
+                    <sly data-sly-use.model="${'au.edu.unsw.common.core.models.PictureModel' @ src=properties.fileReference, alt=properties.altValueFromDAM ? '' : properties.alt}"/>
+                    <img alt="${model.alt}" srcset="${properties.fileReference}">
+                </div>
+            </div>
+            <div class="author-v3__text-container">
+                <div class="author-v3__name">
+                    ${[properties.firstName,properties.lastName] @ join=' ', context='html'}
+                </div>
+                <div class="author-v3__title">
+                    ${properties.title @ context='html'}
+                </div>
+                <div class="author-v3__content"> ${properties.description @ context='html'}</div>
+            </div>
+        </div>
+    </a>
+</sly>

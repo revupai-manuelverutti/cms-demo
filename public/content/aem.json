@@ -1,0 +1,62 @@
+{
+  "title": "Test AEM Components",
+  "path": "/aem",
+  "description": "",
+  "sections": [
+    {
+      "type": "imagepage",
+      "value": "",
+      "componentType": "image",
+      "componentId": "1",
+      "componentTitle": "this image",
+      "src": "https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&fm=jpg&q=60&w=3000",
+      "alt": "pghoto",
+      "articleStyle": "no se",
+      "quoteText": "This is the image component"
+    },
+    {
+      "type": "authorpage",
+      "value": "",
+      "componentType": "Author",
+      "componentId": "author3",
+      "componentTitle": "author test",
+      "linkUrl": "https://www.youtube.com/",
+      "firstName": "Manuel",
+      "lastName": "Verutti",
+      "authorTitle": "Developer",
+      "description": "This is a description made as an example of what we could foun on the author component",
+      "src": "https://unity.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Ffuvbjjlp%2Fproduction%2Fbdd4ab9208069e280930c85cf38e5015b3582535-1910x938.png&w=3840&q=75",
+      "alt": "alt text",
+      "clickCategory": "",
+      "clickId": "",
+      "clickName": "",
+      "clickTitle": ""
+    },
+    {
+      "type": "mosaicv2",
+      "value": "",
+      "componentType": "mosaic",
+      "componentId": "mosaico1maniel",
+      "componentTitle": "Mosaico",
+      "customColor1": "#e0b046",
+      "customColor2": "#008000",
+      "tilesJson": "[\n{\n\"tiletype\": \"tile-type--hero\",\n\"fileReference\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlsaaVsTbCMj6mAzSg12F1uHS4q9bOCcLsLRIpTckfFRmsspchu2aAtFaVEB0zZv4e4ak&usqp=CAU\",\n\"alt\": \"Campus aerial\",\n\"overlay\": \"true\",\n\"heading\": \"Study at UNSW\",\n\"introText\": \"Join a global top 20 university.\",\n\"ctaLink\": \"/study\",\n\"ctaLabel\": \"Explore programs\",\n\"ctaNewTab\": \"false\",\n\"clickCategory\": \"MosaicV2\",\n\"clickId\": \"cta-hero-1\",\n\"clickTitle\": \"Home\",\n\"clickName\": \"Explore programs\"\n},\n{\n\"tiletype\": \"tile-type--icon\",\n\"fileReference\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlsaaVsTbCMj6mAzSg12F1uHS4q9bOCcLsLRIpTckfFRmsspchu2aAtFaVEB0zZv4e4ak&usqp=CAU\",\n\"alt\": \"Leaf icon\",\n\"isImageDecorative\": \"true\",\n\"heading\": \"Sustainability\"\n},\n{\n\"tiletype\": \"tile-type--content\",\n\"heading\": \"Scholarships\",\n\"introText\": \"Financial support for high-achieving students.\",\n\"ctaLink\": \"/scholarships\",\n\"ctaLabel\": \"Find scholarships\",\n\"ctaNewTab\": \"false\",\n\"faculty\": \"Engineering\",\n\"tileBgColor\": \"#e0b046\",\n\"clickCategory\": \"MosaicV2\",\n\"clickId\": \"cta-content-1\",\n\"clickTitle\": \"Home\",\n\"clickName\": \"Find scholarships\"\n},\n{\n\"tiletype\": \"tile-type--profile\",\n\"fileReference\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlsaaVsTbCMj6mAzSg12F1uHS4q9bOCcLsLRIpTckfFRmsspchu2aAtFaVEB0zZv4e4ak&usqp=CAU\",\n\"alt\": \"Portrait of Jane Doe\",\n\"profileName\": \"Jane Doe\",\n\"subheading\": \"Professor of AI\",\n\"introText\": \"Leading research in AI for health.\",\n\"ctaLink\": \"/people/jane-doe\",\n\"ctaLabel\": \"View profile\",\n\"ctaNewTab\": \"false\",\n\"faculty\": \"Science\",\n\"clickCategory\": \"MosaicV2\",\n\"clickId\": \"cta-profile-1\",\n\"clickTitle\": \"Home\",\n\"clickName\": \"View profile\"\n},\n{\n\"tiletype\": \"tile-type--image\",\n\"fileReference\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlsaaVsTbCMj6mAzSg12F1uHS4q9bOCcLsLRIpTckfFRmsspchu2aAtFaVEB0zZv4e4ak&usqp=CAU\",\n\"alt\": \"Students in the Quad\"\n},{\n\"tiletype\": \"tile-type--hero\",\n\"fileReference\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlsaaVsTbCMj6mAzSg12F1uHS4q9bOCcLsLRIpTckfFRmsspchu2aAtFaVEB0zZv4e4ak&usqp=CAU\",\n\"alt\": \"Campus aerial\",\n\"overlay\": \"true\",\n\"heading\": \"Study at UNSW\",\n\"introText\": \"Join a global top 20 university.\",\n\"ctaLink\": \"/study\",\n\"ctaLabel\": \"Explore programs\",\n\"ctaNewTab\": \"false\",\n\"clickCategory\": \"MosaicV2\",\n\"clickId\": \"cta-hero-1\",\n\"clickTitle\": \"Home\",\n\"clickName\": \"Explore programs\"\n},\n{\n\"tiletype\": \"tile-type--icon\",\n\"fileReference\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlsaaVsTbCMj6mAzSg12F1uHS4q9bOCcLsLRIpTckfFRmsspchu2aAtFaVEB0zZv4e4ak&usqp=CAU\",\n\"alt\": \"Leaf icon\",\n\"isImageDecorative\": \"true\",\n\"heading\": \"Sustainability\"\n},\n{\n\"tiletype\": \"tile-type--content\",\n\"heading\": \"Scholarships\",\n\"introText\": \"Financial support for high-achieving students.\",\n\"ctaLink\": \"/scholarships\",\n\"ctaLabel\": \"Find scholarships\",\n\"ctaNewTab\": \"false\",\n\"faculty\": \"Engineering\",\n\"tileBgColor\": \"#e0b046\",\n\"clickCategory\": \"MosaicV2\",\n\"clickId\": \"cta-content-1\",\n\"clickTitle\": \"Home\",\n\"clickName\": \"Find scholarships\"\n},\n{\n\"tiletype\": \"tile-type--profile\",\n\"fileReference\": \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlsaaVsTbCMj6mAzSg12F1uHS4q9bOCcLsLRIpTckfFRmsspchu2aAtFaVEB0zZv4e4ak&usqp=CAU\",\n\"alt\": \"Portrait of Jane Doe\",\n\"profileName\": \"Jane Doe\",\n\"subheading\": \"Professor of AI\",\n\"introText\": \"Leading research in AI for health.\",\n\"ctaLink\": \"/people/jane-doe\",\n\"ctaLabel\": \"View profile\",\n\"ctaNewTab\": \"false\",\n\"faculty\": \"Science\",\n\"clickCategory\": \"MosaicV2\",\n\"clickId\": \"cta-profile-1\",\n\"clickTitle\": \"Home\",\n\"clickName\": \"View profile\"\n}\n]"
+    },
+    {
+      "type": "locationcardv2",
+      "value": "",
+      "componentType": "location",
+      "componentId": "1",
+      "componentTitle": "location example",
+      "itemsJson": "[\n{\n\"latitude\": \"6.235023794892387\",\n\"longitude\": \" -75.593439068772\",\n\"locationTitle\": \"Kensington Campus\",\n\"address\": \"High St, Kensington NSW\",\n\"directionsText\": \"Get directions\",\n\"linkLabel\": \"Campus page\",\n\"linkUrl\": \"/campus\",\n\"linkNewWindow\": \"false\",\n\"linkIsExternal\": \"false\"\n}\n]",
+      "lat": "6.235023794892387",
+      "lng": " -75.593439068772",
+      "zoom": "100",
+      "locationName": "neutro",
+      "locationSubtitle": "neutro",
+      "address": "diag 76 83 39"
+    }
+  ],
+  "createdAt": "2025-11-05T04:12:55.088Z",
+  "updatedAt": "2025-11-08T23:42:03.690Z"
+}

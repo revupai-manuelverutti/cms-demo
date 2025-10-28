@@ -1,0 +1,39 @@
+<div class="cq-placeholder" data-emptytext="${component.title @ context='attribute'}"
+     data-sly-test="${wcmmode.edit}" ></div>
+<sly data-sly-use.multiItems="au.edu.unsw.common.core.models.MultifieldsModel"
+     data-sly-use.button="unsw-common/components/templates/button.html">
+   <sly data-sly-set.short="${properties.announcementType == 'short'}"></sly>
+   <div class="pageAnnouncement-component ${short ? 'single-line-announcement' : ''}">
+      <div data-sly-test="${(short && properties.shortCloseIcon) || (!short && properties.longCloseIcon)}"
+           class="pageAnnouncement__close-container tooltip">
+         <button class="pageAnnouncement__close-button" aria-label="Close">
+            <i class="pageAnnouncement__close-icon">
+              <svg width="23" height="23" version="1.1" viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+               <path d="M 10,11.5 0.5,21 2,22.5 11.5,13 21,22.5 22.5,21 13,11.5 22.5,2 21,0.5 11.5,10 2,0.5 0.5,2 Z" fill="#000"/>
+              </svg>
+            </i>
+         </button>
+         <span class="tooltip__text">Close</span>
+      </div>
+
+      <div class="pageAnnouncement__container">
+         <sly data-sly-test="${short}">
+            <div class="pageAnnouncement__text single-line-announcement">
+               ${properties.shortAnnouncement @context = 'html'}
+            </div>
+         </sly>
+
+         <sly data-sly-test="${!short}">
+            <div data-sly-test="${properties.title}" class="pageAnnouncement__title">${properties.title}</div>
+            <div class="pageAnnouncement__text">
+               ${properties.longAnnouncement @context = 'html'}
+            </div>
+            <div class="pageAnnouncement__button">
+               <sly data-sly-list="${multiItems.multifields.listChildren}">
+                  <sly data-sly-call="${button.template @ button=item}"/>
+               </sly>
+            </div>
+         </sly>
+      </div>
+   </div>
+</sly>

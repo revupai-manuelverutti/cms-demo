@@ -1,0 +1,37 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.multiItems="au.edu.unsw.common.core.models.MultifieldsModel">
+</sly>
+<sly data-sly-test.hasContent="${properties.lat && properties.long}"></sly>
+<sly data-sly-call="${template.placeholder @ isEmpty=!hasContent, classAppend='cmp-location-card'}"></sly>
+
+<span data-sly-test="${hasContent}" data-component_type="${component.name}"
+    data-component_id="${analyticsdata.uniqueId}"
+    data-component_title="${analyticsdata.title}">
+    <div class="map">
+      <div class="unsw-map"
+           data-markerpin="/etc.clientlibs/unsw-common/clientlibs/unsw-uds-assets/site/styles/src/assets/resources/icons/google-pin.svg"
+           data-center-lat="${properties.lat}"
+           data-center-lng="${properties.long}"
+           data-zoom="${properties.zoom || '10'}"
+           data-location-title="${properties.locationName}"
+           data-sly-attribute.data-button-text="${properties.enableDirections ? properties.locationSubTitle : false}"
+           data-address="${properties.address}"
+           data-info-window-open="${properties.openTooltip}"
+           data-styles="${properties.mapstyle}"
+           data-markerstyle="${properties.markerstyle}"
+           data-new-window="${properties.locationTooltipTarget ? '_blank' : '_self'}">
+      </div>
+      <div>
+        <sly data-sly-list.itemsinmultifield="${multiItems.multifields.listChildren}">
+          <div data-sly-use.ctaUrl="${'au.edu.unsw.common.core.models.Url' @ url = itemsinmultifield.linkUrl}"
+               data-position='{"lat": "${itemsinmultifield.latitude}", "lng": "${itemsinmultifield.longitude}", "locationTitle": "${itemsinmultifield.locationTitle}", "address": "${itemsinmultifield.address}", "buttonText": "${itemsinmultifield.directionsText}", "linkLabel": "${itemsinmultifield.linkLabel}", "linkUrl": "${ctaUrl.formattedUrl}", "linkNewWindow": "${itemsinmultifield.linkNewWindow}", "linkIsExternal": "${ctaUrl.externalLink}" }'></div>
+        </sly>
+      </div>
+    </div>
+</span>
+<sly data-sly-use.service="au.edu.unsw.common.core.config.osgi.GoogleConfigService"/>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+  data-sly-call="${clientlib.js @ categories='unsw.common.uds.scripts.maps'}"/>
+</sly>
+<script src="https://maps.googleapis.com/maps/api/js?key=${service.googleMapApiKey}&callback=UdsMaps.init"
+    async defer></script>

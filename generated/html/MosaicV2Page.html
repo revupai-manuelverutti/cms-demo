@@ -1,0 +1,124 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"></sly>
+<div class="cq-placeholder" data-emptytext="${component.title @ context='attribute'}" data-sly-test="${wcmmode.edit}"></div>
+<section
+      class="cmp-mosaic-v2"
+      data-cmp-is="cmp-mosaic-v2"
+      data-component_type=.map((item, index) => <div class="cmp-mosaic-v2-tile cmp-mosaic-v2-tile--hero" data-sly-test="${const idxClass = `cmp-mosaic-v2__tile-wrapper-${index}`;
+          const overlayClass = toBool(item.overlay) ? 'cmp-mosaic-v2-tile--overlay' : '';
+
+          const newTab = toBool(item.ctaNewTab);
+          const isDecorative = toBool(item.isImageDecorative);
+
+          return (
+            <div key="${index}" class="cmp-mosaic-v2__tile-wrapper" data-sly-test="${properties.componentType}
+      data-component_id="${properties.componentId}"
+      data-component_title="${properties.componentTitle}"
+    >
+      <div class="cmp-mosaic-v2__tiles">
+        ${properties.tiles}">
+              
+              {item.tiletype == 'tile-type--hero'}">
+                  {item.fileReference && (
+                    <img src="${item.fileReference alt=<a
+                      href={item.ctaLink
+                      target=<div
+                  class="cmp-mosaic-v2-tile cmp-mosaic-v2-tile--icon"
+                  style={{ backgroundColor: customColor1 || undefined}"
+                  tabindex=<img
+                        src="${item.fileReference
+                        alt=<div
+                  class="cmp-mosaic-v2-tile cmp-mosaic-v2-tile--content"
+                  style={{ backgroundColor: item.tileBgColor || customColor1 || customColor2 || undefined}"
+                >
+                  <div class="cmp-mosaic-v2-tile__heading-wrapper">
+                    <div class="cmp-mosaic-v2-tile__heading"><div class="cmp-mosaic-v2-tile__intro-text" data-sly-test="${item.heading}</div>
+                  </div>
+                  <div class="cmp-mosaic-v2-tile__text-content">
+                    ${item.introText}">{item.introText</div>
+                    )}
+                  </div>
+                  <div class="cmp-mosaic-v2-tile__bottom-content">
+                    <div class="cmp-mosaic-v2-tile__faculty" data-faculty-data="${item.faculty>
+                        <img class="cmp-mosaic-v2-tile__faculty-icon-image" />
+                        <div class="cmp-mosaic-v2-tile__faculty-name"></div>
+                      </div>
+                    )}"
+                    <a
+                        href="${item.ctaLink
+                        target=<div class="cmp-mosaic-v2-tile cmp-mosaic-v2-tile--profile" data-sly-test="${newTab ? '_blank' : '_self'}"
+                        class="cmp-mosaic-v2-tile__cta"
+                        data-click_category="${item.clickCategory || properties.componentType}"
+                        data-click_id="${item.clickId || properties.componentId}"
+                        data-click_title="${item.clickTitle || properties.componentTitle}"
+                        data-click_name="${item.clickName || item.ctaLabel}"
+                        tabindex="${0}"
+                      >
+                        <div class="cmp-mosaic-v2-tile__cta-label-wrapper">
+                          <span class="cmp-mosaic-v2-tile__cta-label">${item.ctaLabel}</span>
+                        </div>
+                        <div class="cmp-mosaic-v2-tile__cta-icon-wrapper">
+                          <span class="cmp-mosaic-v2-tile__cta-icon"></span>
+                        </div>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              
+              {item.tiletype == 'tile-type--profile'}">
+                  <div class="cmp-mosaic-v2-tile__profile">
+                    <div class="cmp-mosaic-v2-tile__profile-image">
+                      {item.fileReference && (
+                        <img src="${item.fileReference alt=<div class="cmp-mosaic-v2-tile__faculty" data-faculty-data={item.faculty>
+                        <img class="cmp-mosaic-v2-tile__faculty-icon-image" />
+                        <div class="cmp-mosaic-v2-tile__faculty-name"></div>
+                      </div>
+                    )}"
+                    <a
+                        href="${item.ctaLink
+                        target=<div class="cmp-mosaic-v2-tile cmp-mosaic-v2-tile--image" data-sly-test="${newTab ? '_blank' : '_self'}"
+                        class="cmp-mosaic-v2-tile__cta"
+                        data-click_category="${item.clickCategory || properties.componentType}"
+                        data-click_id="${item.clickId || properties.componentId}"
+                        data-click_title="${item.clickTitle || properties.componentTitle}"
+                        data-click_name="${item.clickName || item.ctaLabel}"
+                        tabindex="${0}"
+                      >
+                        <div class="cmp-mosaic-v2-tile__cta-label-wrapper">
+                          <span class="cmp-mosaic-v2-tile__cta-label">${item.ctaLabel}</span>
+                        </div>
+                        <div class="cmp-mosaic-v2-tile__cta-icon-wrapper">
+                          <span class="cmp-mosaic-v2-tile__cta-icon"></span>
+                        </div>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              
+              {item.tiletype == 'tile-type--image'}">
+                  {item.fileReference && (
+                    <img src="${item.fileReference alt={item.alt || ''}" />
+                  )}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      <div class="cmp-mosaic-v2__controls">
+        <div class="cmp-mosaic-v2__pagination"></div>
+        <div class="cmp-mosaic-v2__prev-next">
+          <button type="button" class="cmp-mosaic-v2__button-prev">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="cmp-mosaic-v2__button-next">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+<sly data-sly-call="${template.placeholder @ isEmpty=false}"></sly>

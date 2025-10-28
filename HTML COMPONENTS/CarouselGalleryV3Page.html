@@ -1,0 +1,45 @@
+<div class="cq-placeholder" data-emptytext="${component.title @ context='attribute'}"
+     data-sly-test="${wcmmode.edit}" ></div>
+<sly data-sly-use.multiItems="au.edu.unsw.common.core.models.CarouselGallery"
+     data-sly-use.carouselImage="unsw-common/components/templates/carousel-image.html"
+     data-sly-use.videoTemplate="unsw-common/components/templates/video.html">
+    <div class="carousel ${properties.showImageThumbnails ? 'galleryV3' : 'galleryDot' }"
+         data-component_type="${component.name}"
+         data-component_id="${analyticsdata.uniqueId}"
+         data-component_title="${analyticsdata.title}">
+        <div class="slider" aria-roledescription="carousel" aria-label="Gallery" role="region">
+            <!-- Loop here-->
+            <sly data-sly-list.slide="${multiItems.slides.listChildren}">
+
+                <sly data-sly-test.isImage="${slide.mediaType == 'image'}"></sly>
+                <sly data-sly-test.isVideo="${slide.mediaType == 'video'}"></sly>
+
+                <sly data-sly-test="${isVideo && slide.videoID}">
+                    <sly data-sly-call="${videoTemplate.template @ youtubeVideoId=slide.videoID,
+                                        videoLength=slide.videoTimer, caption=slide.videoTitle,
+                                        source=slide.videoSource, showControls=properties.showControls}"></sly>
+                </sly>
+
+                <div data-sly-test="${isImage && slide.image}">
+                    <sly data-sly-call="${carouselImage.template @ carouselImage=slide, crop=slide.portraitOrientation, sources=true}"></sly>
+                </div>
+            </sly>
+        </div>
+        <div data-sly-test="${properties.showImageThumbnails}" class="slider-nav">
+            <!-- Loop here-->
+            <sly data-sly-list.slidenav="${multiItems.slides.listChildren}">
+                <sly data-sly-test.isImage="${slidenav.mediaType == 'image'}"></sly>
+                <sly data-sly-test.isVideo="${slidenav.mediaType == 'video'}"></sly>
+
+                <sly data-sly-test="${isVideo && slidenav.videoID}">
+                    <sly data-sly-call="${videoTemplate.template @ youtubeVideoId=slidenav.videoID,
+                                        videoLength=slidenav.videoTimer, showControls=properties.showControls}"></sly>
+                </sly>
+
+                <div data-sly-test="${isImage && slidenav.image}">
+                    <sly data-sly-call="${carouselImage.template @ carouselImage=slidenav, crop=slidenav.portraitOrientation}"></sly>
+                </div>
+            </sly>
+        </div>
+    </div>
+</sly>

@@ -1,0 +1,21 @@
+<!--/* Standard Hero Component */-->
+<span data-component_type="${component.name}" data-component_id="${analyticsdata.uniqueId}" data-component_title="${analyticsdata.title}">
+    <sly data-sly-use.heroItem="hero-item.html"></sly>
+    <sly data-sly-test="${properties.heroType != 'carousel'}">
+        <sly data-sly-call="${heroItem.template @ item=properties, isCarousel=false}"></sly>
+    </sly>
+    <sly data-sly-test.carousel="${properties.heroType == 'carousel'}">
+        <div class="carousel hero">
+            <div class="slider" data-sly-use.multiItems="au.edu.unsw.common.core.models.MultifieldsModel">
+                <sly data-sly-list.item="${multiItems.multifields.listChildren}">
+                    <sly data-sly-call="${heroItem.template @ item=item, isCarousel=true}"></sly>
+                </sly>
+            </div>
+        </div>
+    </sly>
+</span>
+
+<!-- /* Component Placeholder */-->
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"></sly>
+<sly data-sly-test.hasContent="${properties.heroType}"></sly>
+<sly data-sly-call="${template.placeholder @ isEmpty=!hasContent, classAppend='cmp-hero-standard-image'}"></sly>

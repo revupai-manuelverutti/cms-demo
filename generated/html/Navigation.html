@@ -1,0 +1,20 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"></sly>
+<div class="cq-placeholder" data-emptytext="${component.title @ context='attribute'}" data-sly-test="${wcmmode.edit}"></div>
+<nav class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between h-16">
+            <div class="flex items-center">
+              <Link 
+                href="/" 
+                class="text-xl font-bold text-gray-900 dark:text-white"
+              >
+                Mini CMS
+              </Link>
+            </div>
+            <div class="flex items-center space-x-8">
+              <div class="text-sm text-gray-600 dark:text-gray-400">Loading...</div>
+            </div>
+          </div>
+        </div>
+      </nav>
+<sly data-sly-call="${template.placeholder @ isEmpty=false}"></sly>

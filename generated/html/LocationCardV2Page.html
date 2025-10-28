@@ -1,0 +1,68 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"></sly>
+<div class="cq-placeholder" data-emptytext="${component.title @ context='attribute'}" data-sly-test="${wcmmode.edit}"></div>
+<span
+      data-component_type=Number.isFinite(lngNum)
+              ? `Center: (${latNum.toFixed(4, $<div class="mt-3 text-sm text-gray-700 dark:text-gray-300" data-sly-test="${lngNum.toFixed(4)})`
+              : 'Invalid coordinates'}
+          </div>
+          <div class="text-xs text-gray-500 dark:text-gray-400">Zoom: {Number.isFinite(zoomNum) ? zoomNum : '-'}</div>
+
+          
+          {(properties.locationName || properties.address)}">
+              {locationName && <div class="font-semibold">{locationName</div>}
+              <div data-sly-test="${properties.address}">{address</div>}
+            </div>
+          )}
+        </div>
+
+        
+        Number.isFinite(lngNum) && (
+          <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" data-sly-test="${Number.isFinite(latNum)}">
+            <div
+              class="w-5 h-5 rounded-full bg-red-600 shadow-md ring-2 ring-white dark:ring-gray-800"
+              title="${locationName || 'Selected location'
+              aria-label="Primary marker"
+            />
+          </div>
+        )}"
+      </div>
+
+      
+      items.length > 0 && (
+        <div class="mt-4" data-sly-test="${properties.locationItems}">
+          <div class="text-sm font-medium text-gray-800 dark:text-gray-200 mb-2">Locations</div>
+          <ul class="space-y-2">
+            {items.map((m, idx) => {
+              const la = Number.parseFloat(m.latitude);
+              const lo = Number.parseFloat(m.longitude);
+              const coords = Number.isFinite(la) && Number.isFinite(lo)
+                ? `${la.toFixed(4, $<div class="text-sm text-gray-700 dark:text-gray-300 mt-1" data-sly-test="${lo.toFixed(4)}`
+                : 'Invalid coordinates';
+              const properties.newWindow = typeof m.linkNewWindow == 'string' ? m.linkNewWindow == 'true' : !!m.linkNewWindow;
+              const isExternal = typeof m.linkIsExternal == 'string' ? m.linkIsExternal == 'true' : !!m.linkIsExternal;
+              return (
+                <li key="${idx}" class="p-3 rounded-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+                  <div class="flex items-start justify-between">
+                    <div>
+                      <div class="font-semibold text-gray-900 dark:text-gray-100">{m.locationTitle || `Marker #${idx + 1}`}</div>
+                      <div class="text-xs text-gray-500 dark:text-gray-400">${coords}</div>
+                      ${m.address}">{m.address</div>}
+                    </div>
+                    <a
+                        href="${m.linkUrl
+                        target={newWindow ? '_blank' : '_self'}"
+                        rel="${isExternal ? 'noopener noreferrer' : undefined}"
+                        class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 text-sm"
+                      >
+                        {m.linkLabel || 'View'}
+                      </a>
+                    )}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
+    </span>
+<sly data-sly-call="${template.placeholder @ isEmpty=false}"></sly>

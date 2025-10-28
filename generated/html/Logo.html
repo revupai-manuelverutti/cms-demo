@@ -1,0 +1,6 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"></sly>
+<div class="cq-placeholder" data-emptytext="${component.title @ context='attribute'}" data-sly-test="${wcmmode.edit}"></div>
+<Link href="${properties.href}" class="flex items-center justify-center">
+        ${ImageComponent}
+      </Link>
+<sly data-sly-call="${template.placeholder @ isEmpty=false}"></sly>
