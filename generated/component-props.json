@@ -1,0 +1,453 @@
+{
+  "AuthorPage": {
+    "name": "AuthorPageProps",
+    "props": [
+      {
+        "name": "componentType",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "componentId",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "componentTitle",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "linkUrl",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "firstNamesssasiasjas",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "lastName",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "authorTitle",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "src",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "alt",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "clickCategory",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "clickId",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "clickName",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "clickTitle",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      }
+    ]
+  },
+  "Card": {
+    "name": "CardProps",
+    "props": [
+      {
+        "name": "title",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "image",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "footer",
+        "type": "string",
+        "optional": true,
+        "rawType": "React.ReactNode"
+      },
+      {
+        "name": "onClick",
+        "type": "string",
+        "optional": true,
+        "rawType": "() => void"
+      }
+    ]
+  },
+  "Checkbox": {
+    "name": "CheckboxProps",
+    "props": [
+      {
+        "name": "label",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "checked",
+        "type": "boolean",
+        "optional": true,
+        "rawType": "boolean"
+      },
+      {
+        "name": "onChange",
+        "type": "boolean",
+        "optional": true,
+        "rawType": "(checked: boolean) => void"
+      }
+    ]
+  },
+  "Editor": {
+    "name": "EditorProps",
+    "props": [
+      {
+        "name": "content",
+        "type": "string",
+        "optional": true,
+        "rawType": "ContentPage"
+      },
+      {
+        "name": "onSave",
+        "type": "string",
+        "optional": false,
+        "rawType": "(content: ContentPage) => void"
+      },
+      {
+        "name": "onCancel",
+        "type": "string",
+        "optional": false,
+        "rawType": "() => void"
+      }
+    ]
+  },
+  "ImagePage": {
+    "name": "ImagePageProps",
+    "props": [
+      {
+        "name": "componentType",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "componentId",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "componentTitle",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "src",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "alt",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "articleStyle",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "quoteText",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      }
+    ]
+  },
+  "LocationCardV2Page": {
+    "name": "LocationCardV2PageProps",
+    "props": [
+      {
+        "name": "componentType",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "componentId",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "componentTitle",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "lat",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "lng",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "zoom",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "locationName",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "addressLocations",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "locationItems",
+        "type": "array",
+        "optional": true,
+        "rawType": "LocationCardItem[]"
+      },
+      {
+        "name": "locationSubtitle",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "openTooltip",
+        "type": "boolean|string",
+        "optional": true,
+        "rawType": "boolean | string"
+      },
+      {
+        "name": "mapstyle",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "markerstyle",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "markerPin",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "newWindow",
+        "type": "boolean|string",
+        "optional": true,
+        "rawType": "boolean | string"
+      },
+      {
+        "name": "enableDirections",
+        "type": "boolean|string",
+        "optional": true,
+        "rawType": "boolean | string"
+      }
+    ]
+  },
+  "Logo": {
+    "name": "LogoProps",
+    "props": [
+      {
+        "name": "src",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "alt",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "width",
+        "type": "number",
+        "optional": true,
+        "rawType": "number"
+      },
+      {
+        "name": "height",
+        "type": "number",
+        "optional": true,
+        "rawType": "number"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      }
+    ]
+  },
+  "MosaicV2Page": {
+    "name": "MosaicV2PageProps",
+    "props": [
+      {
+        "name": "tiles",
+        "type": "array",
+        "optional": false,
+        "rawType": "MosaicV2Tile[]"
+      },
+      {
+        "name": "componentType",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "componentId",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "componentTitle",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "customColor1",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "customColor2",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      }
+    ]
+  },
+  "PageRenderer": {
+    "name": "PageRendererProps",
+    "props": [
+      {
+        "name": "content",
+        "type": "string",
+        "optional": false,
+        "rawType": "ContentPage"
+      }
+    ]
+  },
+  "SearchBar": {
+    "name": "SearchBarProps",
+    "props": [
+      {
+        "name": "onSearch",
+        "type": "string",
+        "optional": true,
+        "rawType": "(query: string) => void"
+      },
+      {
+        "name": "placeholder",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      }
+    ]
+  },
+  "Typography": {
+    "name": "HeadingProps",
+    "props": [
+      {
+        "name": "children",
+        "type": "string",
+        "optional": false,
+        "rawType": "React.ReactNode"
+      },
+      {
+        "name": "level",
+        "type": "string",
+        "optional": true,
+        "rawType": "1 | 2 | 3 | 4 | 5 | 6"
+      },
+      {
+        "name": "className",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      }
+    ]
+  }
+}

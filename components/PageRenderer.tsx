@@ -8,6 +8,7 @@ import ImagePage from './ImagePage';
 import AuthorPage from './AuthorPage';
 import MosaicV2Page from './MosaicV2Page';
 import LocationCardV2Page from './LocationCardV2Page';
+import propsSchema from '@/generated/component-props.json';
 import { ElementType, JSX } from 'react';
 
 interface PageRendererProps {
@@ -16,6 +17,35 @@ interface PageRendererProps {
 
 export default function PageRenderer({ content }: PageRendererProps) {
   console.debug('[PageRenderer] rendering page:', content?.title, 'sections:', content?.sections?.length);
+  const TYPE_TO_COMPONENT = {
+    imagepage: { Comp: ImagePage, name: 'ImagePage' },
+    authorpage: { Comp: AuthorPage, name: 'AuthorPage' },
+    mosaicv2: { Comp: MosaicV2Page, name: 'MosaicV2Page' },
+    locationcardv2: { Comp: LocationCardV2Page, name: 'LocationCardV2Page' },
+  } as const;
+
+  function buildProps(section: ContentSection, type: keyof typeof TYPE_TO_COMPONENT) {
+    const entry: any = (propsSchema as any)[TYPE_TO_COMPONENT[type].name];
+    const specs: Array<{ name: string; type: string }> = entry?.props || [];
+    const out: Record<string, any> = {};
+    for (const spec of specs) {
+      let val = (section as any)[spec.name];
+      if ((val === undefined || val === null) && spec.type === 'array') {
+        if (spec.name === 'tiles' && section.tilesJson) {
+          try { val = JSON.parse(section.tilesJson); } catch {}
+        }
+        if (spec.name === 'locationItems' && section.itemsJson) {
+          try { val = JSON.parse(section.itemsJson); } catch {}
+        }
+      }
+      out[spec.name] = val;
+    }
+    // Sensible defaults for common props
+    if (out.componentType == null) out.componentType = TYPE_TO_COMPONENT[type].name;
+    if (out.componentId == null) out.componentId = '';
+    if (out.componentTitle == null) out.componentTitle = content.title;
+    return out;
+  }
   const renderSection = (section: ContentSection, index: number) => {
     console.debug('[PageRenderer] section', index, 'type:', section.type);
     switch (section.type) {
@@ -59,20 +89,14 @@ export default function PageRenderer({ content }: PageRendererProps) {
             )}
           </div>
         );
-      case 'imagepage':
+      case 'imagepage': {
+        const props = buildProps(section, 'imagepage');
         return (
           <div key={index} className="mb-6">
-            <ImagePage
-              componentType={section.componentType || 'ImagePage'}
-              componentId={section.componentId || ''}
-              componentTitle={section.componentTitle || content.title}
-              src={section.src || ''}
-              alt={section.alt}
-              articleStyle={section.articleStyle}
-              quoteText={section.quoteText}
-            />
+            <ImagePage {...(props as any)} />
           </div>
         );
+      }
 
       case 'list':
         return (
@@ -116,83 +140,38 @@ export default function PageRenderer({ content }: PageRendererProps) {
             />
           </div>
         );
-      case 'authorpage':
+      case 'authorpage': {
+        const props = buildProps(section, 'authorpage');
         return (
           <div key={index} className="mb-6">
-            <AuthorPage
-              componentType={section.componentType || 'AuthorPage'}
-              componentId={section.componentId || ''}
-              componentTitle={section.componentTitle || content.title}
-              linkUrl={section.linkUrl}
-              firstNamesssasiasjas={section.firstName}
-              lastName={section.lastName}
-              authorTitle={section.authorTitle}
-              description={section.description}
-              src={section.src}
-              alt={section.alt}
-              clickCategory={section.clickCategory}
-              clickId={section.clickId}
-              clickName={section.clickName}
-              clickTitle={section.clickTitle}
-            />
+            <AuthorPage {...(props as any)} />
           </div>
         );
+      }
       case 'mosaicv2':
         // Parse tiles from either structured array or JSON string
-        let tiles = section.tiles || [];
-        if ((!tiles || tiles.length === 0) && section.tilesJson) {
-          try {
-            const parsed = JSON.parse(section.tilesJson);
-            if (Array.isArray(parsed)) tiles = parsed;
-          } catch (e) {
-            console.warn('Invalid tilesJson for mosaicv2 section:', e);
+        {
+          const props = buildProps(section, 'mosaicv2');
+          if ((!props.tiles || (props.tiles as any).length === 0) && section.tilesJson) {
+            try { props.tiles = JSON.parse(section.tilesJson); } catch {}
           }
+          return (
+            <div key={index} className="mb-6">
+              <MosaicV2Page {...(props as any)} />
+            </div>
+          );
+        }
+      case 'locationcardv2': {
+        const props = buildProps(section, 'locationcardv2');
+        if ((!props.locationItems || (props.locationItems as any).length === 0) && section.itemsJson) {
+          try { props.locationItems = JSON.parse(section.itemsJson); } catch {}
         }
         return (
           <div key={index} className="mb-6">
-            <MosaicV2Page
-              tiles={tiles as any}
-              componentType={section.componentType || 'MosaicV2'}
-              componentId={section.componentId || ''}
-              componentTitle={section.componentTitle || content.title}
-              customColor1={section.customColor1}
-              customColor2={section.customColor2}
-            />
+            <LocationCardV2Page {...(props as any)} />
           </div>
         );
-      case 'locationcardv2':
-        // Parse items from either structured array or JSON string
-        let items = section.locationItems || [];
-        if ((!items || (items as any).length === 0) && section.itemsJson) {
-          try {
-            const parsed = JSON.parse(section.itemsJson);
-            if (Array.isArray(parsed)) items = parsed as any;
-          } catch (e) {
-            console.warn('Invalid itemsJson for locationcardv2 section:', e);
-          }
-        }
-        return (
-          <div key={index} className="mb-6">
-            <LocationCardV2Page
-              componentType={section.componentType || 'LocationCardV2'}
-              componentId={section.componentId || ''}
-              componentTitle={section.componentTitle || content.title}
-              lat={section.lat || ''}
-              lng={section.lng || ''}
-              zoom={section.zoom}
-              locationName={section.locationName}
-              locationSubtitle={section.locationSubtitle}
-              address={section.address}
-              openTooltip={section.openTooltip}
-              mapstyle={section.mapstyle}
-              markerstyle={section.markerstyle}
-              markerPin={section.markerPin}
-              newWindow={section.newWindow}
-              enableDirections={section.enableDirections}
-              locationItems={items as any}
-            />
-          </div>
-        );
+      }
 
       default:
         console.warn('[PageRenderer] unknown section type:', (section as any)?.type);

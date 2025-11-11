@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "gen:props": "node scripts/extract-props.mjs",
     "gen:dialogs": "node scripts/generate-dialogs.js",
     "seed:kv": "node scripts/seed-redis.mjs --slug aem",
     "seed:kv:all": "node scripts/seed-redis.mjs --all"

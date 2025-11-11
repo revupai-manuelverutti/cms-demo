@@ -52,6 +52,8 @@ export interface ContentSection {
   enableDirections?: boolean | string;
   locationItems?: LocationCardItem[];
   itemsJson?: string;
+  // Allow additional dynamic props so the editor can adapt to component prop name changes
+  [key: string]: any;
 }
 
 export interface MosaicV2Tile {

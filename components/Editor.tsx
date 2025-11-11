@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import propsSchema from '@/generated/component-props.json';
 import { ContentPage, ContentSection } from '@/lib/content';
 
 interface EditorProps {
@@ -51,6 +52,242 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
     value: '',
   });
 
+  // Dynamic props helpers driven by component prop interfaces
+  const TYPE_TO_COMPONENT: Partial<Record<ContentSection['type'], string>> = {
+    imagepage: 'ImagePage',
+    authorpage: 'AuthorPage',
+    mosaicv2: 'MosaicV2Page',
+    locationcardv2: 'LocationCardV2Page',
+  };
+
+  type PropSpec = { name: string; type: string; optional?: boolean };
+  const getPropSpecsForType = (type: ContentSection['type']): PropSpec[] => {
+    const comp = TYPE_TO_COMPONENT[type];
+    if (!comp) return [];
+    const entry: any = (propsSchema as any)[comp];
+    return entry?.props || [];
+  };
+
+  const coerceInput = (specType: string, raw: string) => {
+    if (specType === 'number') {
+      const n = Number(raw);
+      return Number.isFinite(n) ? n : (raw as any);
+    }
+    if (specType === 'boolean' || specType === 'boolean|string') {
+      if (raw === 'true') return 'true';
+      if (raw === 'false') return 'false';
+      return '';
+    }
+    return raw;
+  };
+
+  const toInputValue = (specType: string, val: any): string => {
+    if (specType === 'boolean' || specType === 'boolean|string') {
+      if (typeof val === 'boolean') return String(val);
+      return val ?? '';
+    }
+    if (specType === 'number') {
+      if (typeof val === 'number') return String(val);
+      return val ?? '';
+    }
+    return (val ?? '') as string;
+  };
+
+  const renderDynamicSectionFields = (index: number, section: ContentSection) => {
+    const specs = getPropSpecsForType(section.type);
+    if (!specs.length) return null;
+    return (
+      <>
+        {specs.map((spec) => {
+          const key = `${index}-${spec.name}`;
+          if (spec.type === 'array') {
+            // Handle arrays via JSON textarea; parse into the real prop if valid
+            const jsonKey = spec.name === 'tiles' ? 'tilesJson' : spec.name === 'locationItems' ? 'itemsJson' : `${spec.name}Json`;
+            const current = (section as any)[jsonKey] ?? (Array.isArray((section as any)[spec.name]) ? JSON.stringify((section as any)[spec.name], null, 2) : '');
+            return (
+              <div key={key} className="md:col-span-2">
+                <label htmlFor={fieldId(jsonKey as any)} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{spec.name} JSON</label>
+                <textarea
+                  id={fieldId(jsonKey as any)}
+                  name={fieldName(jsonKey as any)}
+                  value={current}
+                  onChange={(e) => {
+                    const raw = e.target.value;
+                    updateSection(index, jsonKey as any, raw);
+                    try {
+                      const parsed = JSON.parse(raw);
+                      updateSection(index, spec.name as any, parsed as any);
+                    } catch {
+                      // keep as string only
+                    }
+                  }}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  rows={6}
+                />
+              </div>
+            );
+          }
+          if (spec.type === 'object') {
+            const jsonKey = `${spec.name}Json` as any;
+            const current = (section as any)[jsonKey] ?? ((section as any)[spec.name] ? JSON.stringify((section as any)[spec.name], null, 2) : '');
+            return (
+              <div key={key} className="md:col-span-2">
+                <label htmlFor={fieldId(jsonKey)} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{spec.name} JSON</label>
+                <textarea
+                  id={fieldId(jsonKey)}
+                  name={fieldName(jsonKey)}
+                  value={current}
+                  onChange={(e) => {
+                    const raw = e.target.value;
+                    updateSection(index, jsonKey, raw);
+                    try {
+                      const parsed = JSON.parse(raw);
+                      updateSection(index, spec.name as any, parsed as any);
+                    } catch {
+                      // ignore parse errors
+                    }
+                  }}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  rows={6}
+                />
+              </div>
+            );
+          }
+          if (spec.type === 'boolean' || spec.type === 'boolean|string') {
+            const value = toInputValue(spec.type, (section as any)[spec.name]);
+            return (
+              <div key={key}>
+                <label htmlFor={fieldId(spec.name as any)} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{spec.name}</label>
+                <select
+                  id={fieldId(spec.name as any)}
+                  name={fieldName(spec.name as any)}
+                  value={value}
+                  onChange={(e) => updateSection(index, spec.name as any, coerceInput(spec.type, e.target.value) as any)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                >
+                  <option value="">(unset)</option>
+                  <option value="true">true</option>
+                  <option value="false">false</option>
+                </select>
+              </div>
+            );
+          }
+          const value = toInputValue(spec.type, (section as any)[spec.name]);
+          return (
+            <div key={key} className={spec.name === 'componentTitle' ? 'md:col-span-2' : undefined}>
+              <label htmlFor={fieldId(spec.name as any)} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{spec.name}</label>
+              <input
+                type="text"
+                id={fieldId(spec.name as any)}
+                name={fieldName(spec.name as any)}
+                value={value}
+                onChange={(e) => updateSection(index, spec.name as any, coerceInput(spec.type, e.target.value) as any)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              />
+            </div>
+          );
+        })}
+      </>
+    );
+  };
+
+  const renderDynamicNewSectionFields = (type: ContentSection['type']) => {
+    const specs = getPropSpecsForType(type);
+    if (!specs.length) return null;
+    return (
+      <>
+        {specs.map((spec) => {
+          const key = `new-${spec.name}`;
+          if (spec.type === 'array') {
+            const jsonKey = spec.name === 'tiles' ? 'tilesJson' : spec.name === 'locationItems' ? 'itemsJson' : `${spec.name}Json`;
+            const current = (newSection as any)[jsonKey] ?? (Array.isArray((newSection as any)[spec.name]) ? JSON.stringify((newSection as any)[spec.name], null, 2) : '');
+            return (
+              <div key={key} className="md:col-span-2">
+                <label htmlFor={fieldId(jsonKey as any)} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{spec.name} JSON</label>
+                <textarea
+                  id={fieldId(jsonKey as any)}
+                  name={fieldName(jsonKey as any)}
+                  value={current}
+                  onChange={(e) => {
+                    const raw = e.target.value;
+                    setNewSection(prev => ({ ...prev, [jsonKey]: raw } as any));
+                    try {
+                      const parsed = JSON.parse(raw);
+                      setNewSection(prev => ({ ...prev, [spec.name]: parsed } as any));
+                    } catch {
+                      // ignore parse errors
+                    }
+                  }}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  rows={6}
+                />
+              </div>
+            );
+          }
+          if (spec.type === 'object') {
+            const jsonKey = `${spec.name}Json` as any;
+            const current = (newSection as any)[jsonKey] ?? ((newSection as any)[spec.name] ? JSON.stringify((newSection as any)[spec.name], null, 2) : '');
+            return (
+              <div key={key} className="md:col-span-2">
+                <label htmlFor={fieldId(jsonKey)} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{spec.name} JSON</label>
+                <textarea
+                  id={fieldId(jsonKey)}
+                  name={fieldName(jsonKey)}
+                  value={current}
+                  onChange={(e) => {
+                    const raw = e.target.value;
+                    setNewSection(prev => ({ ...prev, [jsonKey]: raw } as any));
+                    try {
+                      const parsed = JSON.parse(raw);
+                      setNewSection(prev => ({ ...prev, [spec.name]: parsed } as any));
+                    } catch {
+                      // ignore parse errors
+                    }
+                  }}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                  rows={6}
+                />
+              </div>
+            );
+          }
+          if (spec.type === 'boolean' || spec.type === 'boolean|string') {
+            const value = toInputValue(spec.type, (newSection as any)[spec.name]);
+            return (
+              <div key={key}>
+                <label htmlFor={fieldId(spec.name as any)} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{spec.name}</label>
+                <select
+                  id={fieldId(spec.name as any)}
+                  name={fieldName(spec.name as any)}
+                  value={value}
+                  onChange={(e) => setNewSection(prev => ({ ...prev, [spec.name]: coerceInput(spec.type, e.target.value) } as any))}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                >
+                  <option value="">(unset)</option>
+                  <option value="true">true</option>
+                  <option value="false">false</option>
+                </select>
+              </div>
+            );
+          }
+          const value = toInputValue(spec.type, (newSection as any)[spec.name]);
+          return (
+            <div key={key} className={spec.name === 'componentTitle' ? 'md:col-span-2' : undefined}>
+              <label htmlFor={fieldId(spec.name as any)} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{spec.name}</label>
+              <input
+                type="text"
+                id={fieldId(spec.name as any)}
+                name={fieldName(spec.name as any)}
+                value={value}
+                onChange={(e) => setNewSection(prev => ({ ...prev, [spec.name]: coerceInput(spec.type, e.target.value) } as any))}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              />
+            </div>
+          );
+        })}
+      </>
+    );
+  };
+
   useEffect(() => {
     console.debug('[Editor] Mounted with content prop:', content ? { title: content.title, path: content.path, sections: content.sections?.length } : null);
   }, []);
@@ -75,6 +312,15 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
 
   const addSection = () => {
     // Check if section has any content based on its type
+    const dynamicSpecs = getPropSpecsForType(newSection.type);
+    const dynamicHasContent = dynamicSpecs.some(spec => {
+      const val = (newSection as any)[spec.name];
+      if (spec.type === 'array') {
+        const jsonKey = spec.name === 'tiles' ? 'tilesJson' : spec.name === 'locationItems' ? 'itemsJson' : `${spec.name}Json`;
+        return Boolean(val && (val as any).length) || Boolean((newSection as any)[jsonKey]);
+      }
+      return Boolean(val);
+    });
     const hasContent = 
       newSection.value || 
       newSection.src || 
@@ -101,7 +347,8 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
       // locationcardv2-specific fields
       newSection.lat ||
       newSection.lng ||
-      newSection.itemsJson;
+      newSection.itemsJson ||
+      dynamicHasContent;
     
     if (hasContent) {
       console.log('[Editor] addSection with content:', newSection);
@@ -466,7 +713,8 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
                     </>
                   )}
 
-                  {section.type === 'imagepage' && (
+                  {section.type === 'imagepage' && renderDynamicSectionFields(index, section)}
+                  {false && section.type === 'imagepage' && (
                     <>
                       <div>
                         <label htmlFor={fieldId('componentType')} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
@@ -548,7 +796,8 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
                     </>
                   )}
 
-                  {section.type === 'authorpage' && (
+                  {section.type === 'authorpage' && renderDynamicSectionFields(index, section)}
+                  {false && section.type === 'authorpage' && (
                     <>
                       <div>
                         <label htmlFor={fieldId('componentType')} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Component Type</label>
@@ -679,7 +928,8 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
                     </>
                   )}
 
-                  {section.type === 'mosaicv2' && (
+                  {section.type === 'mosaicv2' && renderDynamicSectionFields(index, section)}
+                  {false && section.type === 'mosaicv2' && (
                     <>
                       <div className="md:col-span-2">
                         <label htmlFor={fieldId('componentType')} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Component Type</label>
@@ -753,7 +1003,8 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
                     </>
                   )}
 
-                  {section.type === 'locationcardv2' && (
+                  {section.type === 'locationcardv2' && renderDynamicSectionFields(index, section)}
+                  {false && section.type === 'locationcardv2' && (
                     <>
                       <div>
                         <label htmlFor={fieldId('componentType')} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Component Type</label>
@@ -1037,7 +1288,8 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
                   </>
                 )}
 
-                {newSection.type === 'imagepage' && (
+                {newSection.type === 'imagepage' && renderDynamicNewSectionFields(newSection.type)}
+                {false && newSection.type === 'imagepage' && (
                   <>
                     <div>
                       <label htmlFor={fieldId('componentType')} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
@@ -1121,7 +1373,8 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
                   </>
                 )}
 
-                {newSection.type === 'authorpage' && (
+                {newSection.type === 'authorpage' && renderDynamicNewSectionFields(newSection.type)}
+                {false && newSection.type === 'authorpage' && (
                   <>
                     <div>
                       <label htmlFor={fieldId('componentType')} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Component Type</label>
@@ -1270,7 +1523,8 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
                   </>
                 )}
 
-                {newSection.type === 'mosaicv2' && (
+                {newSection.type === 'mosaicv2' && renderDynamicNewSectionFields(newSection.type)}
+                {false && newSection.type === 'mosaicv2' && (
                   <>
                     <div className="md:col-span-2">
                       <label htmlFor={fieldId('componentType')} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Component Type</label>
@@ -1344,7 +1598,8 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
                   </>
                 )}
 
-                {newSection.type === 'locationcardv2' && (
+                {newSection.type === 'locationcardv2' && renderDynamicNewSectionFields(newSection.type)}
+                {false && newSection.type === 'locationcardv2' && (
                   <>
                     <div>
                       <label htmlFor={fieldId('componentType')} className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Component Type</label>

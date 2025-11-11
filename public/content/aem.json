@@ -30,7 +30,8 @@
       "clickCategory": "",
       "clickId": "",
       "clickName": "",
-      "clickTitle": ""
+      "clickTitle": "",
+      "firstNamesssasiasjas": "manuel"
     },
     {
       "type": "mosaicv2",
@@ -54,9 +55,10 @@
       "zoom": "100",
       "locationName": "neutro",
       "locationSubtitle": "neutro",
-      "address": "diag 76 83 39"
+      "address": "diag 76 83 39",
+      "addressLocations": "cra 108 #44-75"
     }
   ],
   "createdAt": "2025-11-05T04:12:55.088Z",
-  "updatedAt": "2025-11-08T23:42:03.690Z"
+  "updatedAt": "2025-11-11T04:12:46.252Z"
 }

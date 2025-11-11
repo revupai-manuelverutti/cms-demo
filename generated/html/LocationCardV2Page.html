@@ -8,9 +8,9 @@
           <div class="text-xs text-gray-500 dark:text-gray-400">Zoom: {Number.isFinite(zoomNum) ? zoomNum : '-'}</div>
 
           
-          {(properties.locationName || properties.address)}">
+          {(properties.locationName || properties.addressLocations)}">
               {locationName && <div class="font-semibold">{locationName</div>}
-              <div data-sly-test="${properties.address}">{address</div>}
+              <div data-sly-test="${properties.addressLocations}"><div>{addressLocations</div></div>}
             </div>
           )}
         </div>
