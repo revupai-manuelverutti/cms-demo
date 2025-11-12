@@ -1,7 +1,7 @@
 <sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"></sly>
 <div class="cq-placeholder" data-emptytext="${component.title @ context='attribute'}" data-sly-test="${wcmmode.edit}"></div>
 <section
-      class="cmp-mosaic-v2"
+      class="cmp-mosaic-v2 prettier-animation"
       data-cmp-is="cmp-mosaic-v2"
       data-component_type=.map((item, index) => <div class="cmp-mosaic-v2-tile cmp-mosaic-v2-tile--hero" data-sly-test="${const idxClass = `cmp-mosaic-v2__tile-wrapper-${index}`;
           const overlayClass = toBool(item.overlay) ? 'cmp-mosaic-v2-tile--overlay' : '';
@@ -23,12 +23,12 @@
                       href={item.ctaLink
                       target=<div
                   class="cmp-mosaic-v2-tile cmp-mosaic-v2-tile--icon"
-                  style={{ backgroundColor: customColor1 || undefined}"
+                  style={{ backgroundColor: customColorA || undefined}"
                   tabindex=<img
                         src="${item.fileReference
                         alt=<div
                   class="cmp-mosaic-v2-tile cmp-mosaic-v2-tile--content"
-                  style={{ backgroundColor: item.tileBgColor || customColor1 || customColor2 || undefined}"
+                  style={{ backgroundColor: item.tileBgColor || customColorA || customColorB || undefined}"
                 >
                   <div class="cmp-mosaic-v2-tile__heading-wrapper">
                     <div class="cmp-mosaic-v2-tile__heading"><div class="cmp-mosaic-v2-tile__intro-text" data-sly-test="${item.heading}</div>

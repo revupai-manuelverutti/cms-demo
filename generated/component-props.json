@@ -386,13 +386,13 @@
         "rawType": "string"
       },
       {
-        "name": "customColor1",
+        "name": "customColorA",
         "type": "string",
         "optional": true,
         "rawType": "string"
       },
       {
-        "name": "customColor2",
+        "name": "customColorB",
         "type": "string",
         "optional": true,
         "rawType": "string"
