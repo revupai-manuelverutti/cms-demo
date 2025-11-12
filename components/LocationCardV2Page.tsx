@@ -84,7 +84,7 @@ export default function LocationCardV2Page({
           {(locationName || addressLocations) && (
             <div className="mt-3 text-sm text-gray-700 dark:text-gray-300">
               {locationName && <div className="font-semibold">{locationName}</div>}
-              {addressLocations && <div><div>{addressLocations}</div></div>}
+              {addressLocations && <div>{addressLocations}</div>}
             </div>
           )}
         </div>
