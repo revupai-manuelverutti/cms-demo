@@ -268,7 +268,7 @@
         "rawType": "string"
       },
       {
-        "name": "addressLocations",
+        "name": "addressLocations_change_051225",
         "type": "string",
         "optional": true,
         "rawType": "string"
