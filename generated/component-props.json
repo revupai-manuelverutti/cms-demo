@@ -374,7 +374,7 @@
         "rawType": "string"
       },
       {
-        "name": "componentId_change_051225",
+        "name": "componentId",
         "type": "string",
         "optional": true,
         "rawType": "string"

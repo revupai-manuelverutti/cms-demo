@@ -29,7 +29,7 @@ export interface MosaicV2Tile {
 interface MosaicV2PageProps {
   tiles: MosaicV2Tile[];
   componentType?: string;
-  componentId_change_051225?: string;
+  componentId?: string;
   componentTitle?: string;
   customColorA?: string;
   customColorB?: string;
@@ -44,7 +44,7 @@ function toBool(v: boolean | string | undefined): boolean {
 export default function MosaicV2Page({
   tiles,
   componentType,
-  componentId_change_051225: componentId_change_051225,
+  componentId,
   componentTitle,
   customColorA,
   customColorB,
@@ -54,7 +54,7 @@ export default function MosaicV2Page({
       className="cmp-mosaic-v2 prettier-animation"
       data-cmp-is="cmp-mosaic-v2"
       data-component_type={componentType}
-      data-component_id={componentId_change_051225}
+      data-component_id={componentId}
       data-component_title={componentTitle}
     >
       <div className="cmp-mosaic-v2__tiles">
@@ -93,7 +93,7 @@ export default function MosaicV2Page({
                       target={newTab ? '_blank' : '_self'}
                       className="cmp-mosaic-v2-tile__cta uds-brand-button light fill border large"
                       data-click_category={item.clickCategory || componentType}
-                      data-click_id={item.clickId || componentId_change_051225}
+                      data-click_id={item.clickId || componentId}
                       data-click_title={item.clickTitle || componentTitle}
                       data-click_name={item.clickName || item.ctaLabel}
                     >
@@ -155,7 +155,7 @@ export default function MosaicV2Page({
                         target={newTab ? '_blank' : '_self'}
                         className="cmp-mosaic-v2-tile__cta"
                         data-click_category={item.clickCategory || componentType}
-                        data-click_id={item.clickId || componentId_change_051225}
+                        data-click_id={item.clickId || componentId}
                         data-click_title={item.clickTitle || componentTitle}
                         data-click_name={item.clickName || item.ctaLabel}
                         tabIndex={0}
@@ -200,7 +200,7 @@ export default function MosaicV2Page({
                         target={newTab ? '_blank' : '_self'}
                         className="cmp-mosaic-v2-tile__cta"
                         data-click_category={item.clickCategory || componentType}
-                        data-click_id={item.clickId || componentId_change_051225}
+                        data-click_id={item.clickId || componentId}
                         data-click_title={item.clickTitle || componentTitle}
                         data-click_name={item.clickName || item.ctaLabel}
                         tabIndex={0}

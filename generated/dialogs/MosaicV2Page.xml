@@ -25,11 +25,11 @@
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                         fieldLabel="Component Type"
                         name="./componentType"/>
-                    <componentId_change_051225
+                    <componentId
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldLabel="Component Id change 051225"
-                        name="./componentId_change_051225"/>
+                        fieldLabel="Component Id"
+                        name="./componentId"/>
                     <componentTitle
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
