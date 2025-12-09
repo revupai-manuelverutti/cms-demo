@@ -27,7 +27,7 @@
         "rawType": "string"
       },
       {
-        "name": "firstNamesssasiasjas",
+        "name": "firstName",
         "type": "string",
         "optional": true,
         "rawType": "string"
