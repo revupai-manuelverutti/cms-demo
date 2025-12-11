@@ -6,7 +6,7 @@ import type { JSX } from 'react';
 interface HeroBannerPageProps {
   componentType: string;
   componentId: string;
-  componentTitle: string;
+  componentTitle_change_11_12_2025: string;
   image: string;
   alt?: string;
   altValueFromDAM?: boolean | string;
@@ -35,7 +35,7 @@ function toBool(v: boolean | string | undefined): boolean {
 export default function HeroBannerPage({
   componentType,
   componentId,
-  componentTitle,
+  componentTitle_change_11_12_2025: componentTitle_change_11_12_2025,
   image,
   alt = '',
   altValueFromDAM,
@@ -58,7 +58,7 @@ export default function HeroBannerPage({
   const showDetails = toBool(showArticleDetails);
   const showSocial = toBool(showSocialShareOnHeroBanner);
   const resolvedAlt = toBool(altValueFromDAM) ? '' : alt;
-  const heading = title || componentTitle;
+  const heading = title || componentTitle_change_11_12_2025;
 
   const WrapperTag = (articlePagePath ? 'a' : 'div') as keyof JSX.IntrinsicElements;
 
@@ -67,7 +67,7 @@ export default function HeroBannerPage({
       className={`hero-banner-callout${hasOverlay ? ' hero-banner-callout--overlay' : ''}`}
       data-component_type={componentType}
       data-component_id={componentId}
-      data-component_title={componentTitle}
+      data-component_title={componentTitle_change_11_12_2025}
     >
       <div className="hero-banner-callout__inner">
         <WrapperTag
@@ -95,7 +95,7 @@ export default function HeroBannerPage({
                 className="hero-banner-callout__heading-anchor"
                 data-click_category={clickCategory || componentType}
                 data-click_id={clickId || componentId}
-                data-click_title={clickTitle || componentTitle}
+                data-click_title={clickTitle || componentTitle_change_11_12_2025}
                 data-click_name={clickName || heading}
                 href={articlePagePath}
                 aria-label={articlePagePath ? 'Article page' : undefined}
@@ -120,7 +120,7 @@ export default function HeroBannerPage({
                 href={articlePagePath}
                 data-click_category={clickCategory || componentType}
                 data-click_id={clickId || componentId}
-                data-click_title={clickTitle || componentTitle}
+                data-click_title={clickTitle || componentTitle_change_11_12_2025}
                 data-click_name={clickName || buttonCopy}
               >
                 {buttonCopy}

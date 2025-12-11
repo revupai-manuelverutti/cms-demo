@@ -24,11 +24,11 @@
                         fieldLabel="Component Id"
                         name="./componentId"
                         required="{Boolean}true"/>
-                    <componentTitle
+                    <componentTitle_change_11_12_2025
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldLabel="Component Title"
-                        name="./componentTitle"
+                        fieldLabel="Component Title change 11 12 2025"
+                        name="./componentTitle_change_11_12_2025"
                         required="{Boolean}true"/>
                     <image
                         jcr:primaryType="nt:unstructured"
