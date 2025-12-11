@@ -39,7 +39,7 @@
         "rawType": "string"
       },
       {
-        "name": "authorTitle",
+        "name": "authorTitle_change_11_12_2025",
         "type": "string",
         "optional": true,
         "rawType": "string"
@@ -322,7 +322,7 @@
         "rawType": "string"
       },
       {
-        "name": "src",
+        "name": "src_change_11_12_2025",
         "type": "string",
         "optional": false,
         "rawType": "string"
@@ -393,7 +393,7 @@
         "rawType": "string"
       },
       {
-        "name": "addressLocations",
+        "name": "addressLocations_change_11_12_2025",
         "type": "string",
         "optional": true,
         "rawType": "string"
@@ -511,13 +511,13 @@
         "rawType": "string"
       },
       {
-        "name": "customColorA",
+        "name": "customColorA_change_11_12_2025",
         "type": "string",
         "optional": true,
         "rawType": "string"
       },
       {
-        "name": "customColorB",
+        "name": "customColorB_change_11_12_2025",
         "type": "string",
         "optional": true,
         "rawType": "string"

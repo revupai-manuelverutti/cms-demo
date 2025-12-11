@@ -35,16 +35,16 @@
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                         fieldLabel="Component Title"
                         name="./componentTitle"/>
-                    <customColorA
+                    <customColorA_change_11_12_2025
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldLabel="Custom Color A"
-                        name="./customColorA"/>
-                    <customColorB
+                        fieldLabel="Custom Color A change 11 12 2025"
+                        name="./customColorA_change_11_12_2025"/>
+                    <customColorB_change_11_12_2025
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldLabel="Custom Color B"
-                        name="./customColorB"/>
+                        fieldLabel="Custom Color B change 11 12 2025"
+                        name="./customColorB_change_11_12_2025"/>
                 </items>
             </columns>
         </items>
