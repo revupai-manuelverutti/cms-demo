@@ -3,7 +3,7 @@ import pathModule from 'path';
 import { kv } from '@vercel/kv';
 
 export interface ContentSection {
-  type: 'text' | 'image' | 'heading' | 'list' | 'searchbar' | 'checkbox' | 'card' | 'imagepage' | 'authorpage' | 'mosaicv2' | 'locationcardv2';
+  type: 'text' | 'image' | 'heading' | 'list' | 'searchbar' | 'checkbox' | 'card' | 'imagepage' | 'authorpage' | 'mosaicv2' | 'locationcardv2' | 'herobanner';
   value?: string;
   src?: string;
   alt?: string;
@@ -32,6 +32,20 @@ export interface ContentSection {
   clickId?: string;
   clickName?: string;
   clickTitle?: string;
+  // For herobanner
+  image?: string;
+  alt?: string;
+  altValueFromDAM?: boolean | string;
+  overlay?: boolean | string;
+  title?: string;
+  articlePagePath?: string;
+  articleDate?: string;
+  showArticleDetails?: boolean | string;
+  buttonCopy?: string;
+  buttonColor?: string;
+  buttonStyle?: string;
+  copyright?: string;
+  showSocialShareOnHeroBanner?: boolean | string;
   // For mosaicv2
   tiles?: MosaicV2Tile[];
   tilesJson?: string; // alternative JSON input for tiles

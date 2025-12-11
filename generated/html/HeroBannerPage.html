@@ -1,0 +1,40 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"></sly>
+<div class="cq-placeholder" data-emptytext="${component.title @ context='attribute'}" data-sly-test="${wcmmode.edit}"></div>
+<div
+      class="hero-banner-callout"
+      data-component_type='Article page' : undefined}
+        >
+          <img
+            class="hero-banner-callout__background-image hero-banner-callout__background-image--desktop"
+            src=showDetails">
+                ${properties.buttonCopy}
+              </a>
+
+            <img
+              class="hero-banner-callout__play-icon"
+              alt="Play icon"
+              src="/etc.clientlibs/unsw-common/clientlibs/unsw-uds-assets/site/styles/src/assets/resources/illustrations/icon-play-circle.svg"
+            />
+          </div>
+        </div>
+
+        <div class="hero-banner__social-button-container" data-sly-test="${showSocial}">
+            <button class="hero-banner__social-button" aria-expanded="false" aria-controls="hero-banner-social">
+              <img
+                class="hero-banner__social-icon"
+                alt="Expand social share"
+                src="/etc.clientlibs/unsw-common/clientlibs/unsw-uds-assets/site/styles/src/assets/resources/illustrations/icon-share-black.svg"
+              />
+              <img
+                class="hero-banner__social-icon-close"
+                alt="Close social share"
+                src="/etc.clientlibs/unsw-common/clientlibs/unsw-uds-assets/site/styles/src/assets/resources/illustrations/cross-thin.svg"
+              />
+            </button>
+            <div class="hero-banner__social-share-container" id="hero-banner-social"></div>
+          </div>
+      </div>
+
+      <div class="hero-banner-callout__copyright" dangerouslySetInnerHTML="${{ __html: copyright}"} / data-sly-test="${properties.copyright}">
+    </div>
+<sly data-sly-call="${template.placeholder @ isEmpty=false}"></sly>

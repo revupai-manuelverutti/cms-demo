@@ -58,6 +58,7 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
     authorpage: 'AuthorPage',
     mosaicv2: 'MosaicV2Page',
     locationcardv2: 'LocationCardV2Page',
+    herobanner: 'HeroBannerPage',
   };
 
   type PropSpec = { name: string; type: string; optional?: boolean };
@@ -539,14 +540,15 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
                       <option value="image">Image</option>
                       <option value="list">List</option>
                       <option value="searchbar">Search Bar</option>
-                      <option value="checkbox">Checkbox</option>
-                      <option value="card">Card</option>
-                      <option value="imagepage">Image Page</option>
-                      <option value="authorpage">Author Page</option>
-                      <option value="mosaicv2">Mosaic V2</option>
-                      <option value="locationcardv2">Location Card V2</option>
-                    </select>
-                  </div>
+                    <option value="checkbox">Checkbox</option>
+                <option value="card">Card</option>
+                <option value="imagepage">Image Page</option>
+                <option value="authorpage">Author Page</option>
+                <option value="mosaicv2">Mosaic V2</option>
+                <option value="herobanner">Hero Banner</option>
+                <option value="locationcardv2">Location Card V2</option>
+              </select>
+            </div>
 
                   {section.type === 'heading' && (
                     <div>
@@ -797,6 +799,7 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
                   )}
 
                   {section.type === 'authorpage' && renderDynamicSectionFields(index, section)}
+                  {section.type === 'herobanner' && renderDynamicSectionFields(index, section)}
                   {false && section.type === 'authorpage' && (
                     <>
                       <div>
@@ -1117,6 +1120,7 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
                     <option value="imagepage">Image Page</option>
                     <option value="authorpage">Author Page</option>
                     <option value="mosaicv2">Mosaic V2</option>
+                    <option value="herobanner">Hero Banner</option>
                     <option value="locationcardv2">Location Card V2</option>
                   </select>
                 </div>
@@ -1374,6 +1378,7 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
                 )}
 
                 {newSection.type === 'authorpage' && renderDynamicNewSectionFields(newSection.type)}
+                {newSection.type === 'herobanner' && renderDynamicNewSectionFields(newSection.type)}
                 {false && newSection.type === 'authorpage' && (
                   <>
                     <div>

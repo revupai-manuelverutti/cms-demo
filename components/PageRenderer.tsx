@@ -8,6 +8,7 @@ import ImagePage from './ImagePage';
 import AuthorPage from './AuthorPage';
 import MosaicV2Page from './MosaicV2Page';
 import LocationCardV2Page from './LocationCardV2Page';
+import HeroBannerPage from './HeroBannerPage';
 import propsSchema from '@/generated/component-props.json';
 import { ElementType, JSX } from 'react';
 
@@ -22,6 +23,7 @@ export default function PageRenderer({ content }: PageRendererProps) {
     authorpage: { Comp: AuthorPage, name: 'AuthorPage' },
     mosaicv2: { Comp: MosaicV2Page, name: 'MosaicV2Page' },
     locationcardv2: { Comp: LocationCardV2Page, name: 'LocationCardV2Page' },
+    herobanner: { Comp: HeroBannerPage, name: 'HeroBannerPage' },
   } as const;
 
   function buildProps(section: ContentSection, type: keyof typeof TYPE_TO_COMPONENT) {
@@ -169,6 +171,14 @@ export default function PageRenderer({ content }: PageRendererProps) {
         return (
           <div key={index} className="mb-6">
             <LocationCardV2Page {...(props as any)} />
+          </div>
+        );
+      }
+      case 'herobanner': {
+        const props = buildProps(section, 'herobanner');
+        return (
+          <div key={index} className="mb-6">
+            <HeroBannerPage {...(props as any)} />
           </div>
         );
       }

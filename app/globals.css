@@ -268,3 +268,168 @@ body {
 @media (min-width: 1024px) {
   .map .unsw-map { min-height: 420px; }
 }
+
+/* ========== HeroBanner component ==========
+   Matches components/HeroBannerPage.tsx classes */
+.hero-banner-callout {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: #0f172a;
+  color: #fff;
+  min-height: 360px;
+}
+.hero-banner-callout--overlay .hero-banner-callout__background-overlay {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.55) 100%);
+}
+.hero-banner-callout__inner {
+  position: relative;
+  height: 100%;
+}
+.hero-banner-callout__background {
+  display: block;
+  height: 100%;
+}
+.hero-banner-callout__background-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-banner-callout__background-image--mobile {
+  display: block;
+}
+.hero-banner-callout__background-image--desktop {
+  display: none;
+}
+@media (min-width: 768px) {
+  .hero-banner-callout__background-image--mobile {
+    display: none;
+  }
+  .hero-banner-callout__background-image--desktop {
+    display: block;
+  }
+}
+.hero-banner-callout__background-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.55) 100%);
+}
+.hero-banner-callout__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+}
+.hero-banner-callout__content-inner {
+  padding: 2rem 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .hero-banner-callout__content-inner {
+    padding: 3rem;
+    max-width: 720px;
+  }
+}
+.hero-banner-callout__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.hero-banner-callout__heading-anchor {
+  color: inherit;
+  text-decoration: none;
+}
+.hero-banner-callout__heading {
+  font-size: clamp(1.75rem, 2.5vw, 2.75rem);
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 0;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+.hero-banner-callout__publish-time {
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #e5e7eb;
+}
+.hero-banner-callout__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+.hero-banner-callout__cta--primary { background: #f59e0b; color: #111827; }
+.hero-banner-callout__cta--secondary { background: #0ea5e9; color: #0b1b2b; }
+.hero-banner-callout__cta--light { background: #fff; color: #0f172a; }
+.hero-banner-callout__cta--dark { background: #0f172a; color: #f8fafc; }
+.hero-banner-callout__cta--tertiary { background: #22c55e; color: #0f172a; }
+.hero-banner-callout__cta--fill-border { border-color: rgba(255, 255, 255, 0.65); }
+.hero-banner-callout__cta--fill { border-color: transparent; }
+.hero-banner-callout__cta--border {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.7);
+  color: #fff;
+}
+.hero-banner-callout__cta--none { display: none; }
+.hero-banner-callout__cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+.hero-banner-callout__play-icon {
+  width: 52px;
+  height: 52px;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.35));
+}
+.hero-banner__social-button-container {
+  position: absolute;
+  right: 1.25rem;
+  top: 1.25rem;
+  z-index: 3;
+}
+.hero-banner__social-button {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 9999px;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hero-banner__social-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+.hero-banner__social-icon,
+.hero-banner__social-icon-close {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+.hero-banner__social-icon-close {
+  display: none;
+}
+.hero-banner__social-share-container {
+  margin-top: 0.75rem;
+  min-width: 120px;
+}
+.hero-banner-callout__copyright {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+}

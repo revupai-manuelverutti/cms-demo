@@ -175,6 +175,131 @@
       }
     ]
   },
+  "HeroBannerPage": {
+    "name": "HeroBannerPageProps",
+    "props": [
+      {
+        "name": "componentType",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "componentId",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "componentTitle",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "image",
+        "type": "string",
+        "optional": false,
+        "rawType": "string"
+      },
+      {
+        "name": "alt",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "altValueFromDAM",
+        "type": "boolean|string",
+        "optional": true,
+        "rawType": "boolean | string"
+      },
+      {
+        "name": "overlay",
+        "type": "boolean|string",
+        "optional": true,
+        "rawType": "boolean | string"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "articlePagePath",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "articleDate",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "showArticleDetails",
+        "type": "boolean|string",
+        "optional": true,
+        "rawType": "boolean | string"
+      },
+      {
+        "name": "buttonCopy",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "buttonColor",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "buttonStyle",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "copyright",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "showSocialShareOnHeroBanner",
+        "type": "boolean|string",
+        "optional": true,
+        "rawType": "boolean | string"
+      },
+      {
+        "name": "clickCategory",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "clickId",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "clickTitle",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      },
+      {
+        "name": "clickName",
+        "type": "string",
+        "optional": true,
+        "rawType": "string"
+      }
+    ]
+  },
   "ImagePage": {
     "name": "ImagePageProps",
     "props": [
