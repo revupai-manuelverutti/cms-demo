@@ -6,7 +6,7 @@ interface ImagePageProps {
   componentType: string;
   componentId: string;
   componentTitle: string;
-  src: string;
+  src_change_11_12_2025: string;
   alt?: string;
   articleStyle?: string;
   quoteText?: string;
@@ -16,7 +16,7 @@ export default function ImagePage({
   componentType,
   componentId,
   componentTitle,
-  src,
+  src_change_11_12_2025: src_change_11_12_2025,
   alt = '',
   articleStyle,
   quoteText,
@@ -30,7 +30,7 @@ export default function ImagePage({
       data-component_title={componentTitle}
     >
       <div className={styleClass}>
-        <img src={src} alt={alt} className="w-full h-auto" />
+        <img src={src_change_11_12_2025} alt={alt} className="w-full h-auto" />
         {quoteText ? (
           <p className="mt-2 text-sm text-gray-600 italic">{quoteText}</p>
         ) : null}
