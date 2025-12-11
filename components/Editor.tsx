@@ -535,18 +535,12 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
                       value={section.type}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                     >
-                      <option value="text">Text</option>
-                      <option value="heading">Heading</option>
-                      <option value="image">Image</option>
-                      <option value="list">List</option>
-                      <option value="searchbar">Search Bar</option>
-                    <option value="checkbox">Checkbox</option>
-                <option value="card">Card</option>
-                <option value="imagepage">Image Page</option>
-                <option value="authorpage">Author Page</option>
-                <option value="mosaicv2">Mosaic V2</option>
-                <option value="herobanner">Hero Banner</option>
-                <option value="locationcardv2">Location Card V2</option>
+                      <option value="card">Card</option>
+                      <option value="imagepage">Image Page</option>
+                      <option value="authorpage">Author Page</option>
+                      <option value="mosaicv2">Mosaic V2</option>
+                      <option value="herobanner">Hero Banner</option>
+                      <option value="locationcardv2">Location Card V2</option>
               </select>
             </div>
 
@@ -1110,13 +1104,6 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
                     value={newSection.type}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                   >
-                    <option value="text">Text</option>
-                    <option value="heading">Heading</option>
-                    <option value="image">Image</option>
-                    <option value="list">List</option>
-                    <option value="searchbar">Search Bar</option>
-                    <option value="checkbox">Checkbox</option>
-                    <option value="card">Card</option>
                     <option value="imagepage">Image Page</option>
                     <option value="authorpage">Author Page</option>
                     <option value="mosaicv2">Mosaic V2</option>
