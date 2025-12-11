@@ -10,7 +10,7 @@ interface AuthorPageProps {
   linkUrl?: string;
   firstName?: string;
   lastName?: string;
-  authorTitle?: string;
+  authorTitle_change_11_12_2025?: string;
   description?: string;
   src?: string;
   alt?: string;
@@ -27,7 +27,7 @@ export default function AuthorPage({
   linkUrl,
   firstName,
   lastName,
-  authorTitle,
+  authorTitle_change_11_12_2025: authorTitle_change_11_12_2025,
   description,
   src,
   alt = '',
@@ -46,7 +46,7 @@ export default function AuthorPage({
     'data-component_title': componentTitle,
     'data-click_category': clickCategory || componentType,
     'data-click_id': clickId || componentId,
-    'data-click_name': clickName || authorTitle || name,
+    'data-click_name': clickName || authorTitle_change_11_12_2025 || name,
     'data-click_title': clickTitle || componentTitle,
   } as any;
 
@@ -61,7 +61,7 @@ export default function AuthorPage({
       ) : null}
       <div className="author-v3__text-container">
         {name ? <div className="author-v3__name">{name}</div> : null}
-        {authorTitle ? <div className="author-v3__title">{authorTitle}</div> : null}
+        {authorTitle_change_11_12_2025 ? <div className="author-v3__title">{authorTitle_change_11_12_2025}</div> : null}
         {description ? (
           <div className="author-v3__content">{description}</div>
         ) : null}

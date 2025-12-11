@@ -30,11 +30,11 @@
                         fieldLabel="Component Title"
                         name="./componentTitle"
                         required="{Boolean}true"/>
-                    <src
+                    <src_change_11_12_2025
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldLabel="Src"
-                        name="./src"
+                        fieldLabel="Src change 11 12 2025"
+                        name="./src_change_11_12_2025"
                         required="{Boolean}true"/>
                     <alt
                         jcr:primaryType="nt:unstructured"
