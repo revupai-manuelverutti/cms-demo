@@ -511,13 +511,13 @@
         "rawType": "string"
       },
       {
-        "name": "customColorA_change_11_12_2025",
+        "name": "customColorA",
         "type": "string",
         "optional": true,
         "rawType": "string"
       },
       {
-        "name": "customColorB_change_11_12_2025",
+        "name": "customColorB",
         "type": "string",
         "optional": true,
         "rawType": "string"

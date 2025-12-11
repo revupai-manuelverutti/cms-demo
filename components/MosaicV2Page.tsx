@@ -31,8 +31,8 @@ interface MosaicV2PageProps {
   componentType?: string;
   componentId?: string;
   componentTitle?: string;
-  customColorA_change_11_12_2025?: string;
-  customColorB_change_11_12_2025?: string;
+  customColorA?: string;
+  customColorB?: string;
 }
 
 function toBool(v: boolean | string | undefined): boolean {
@@ -46,8 +46,8 @@ export default function MosaicV2Page({
   componentType,
   componentId,
   componentTitle,
-  customColorA_change_11_12_2025: customColorA_change_11_12_2025,
-  customColorB_change_11_12_2025: customColorB_change_11_12_2025,
+  customColorA,
+  customColorB,
 }: MosaicV2PageProps) {
   return (
     <section
@@ -78,7 +78,7 @@ export default function MosaicV2Page({
                     <div className="cmp-mosaic-v2-tile__heading-wrapper">
                       <div
                         className="cmp-mosaic-v2-tile__heading"
-                        style={{ backgroundColor: item.headingBgColor || customColorA_change_11_12_2025 || undefined }}
+                        style={{ backgroundColor: item.headingBgColor || customColorA || undefined }}
                       >
                         {item.heading}
                       </div>
@@ -110,7 +110,7 @@ export default function MosaicV2Page({
               {item.tiletype === 'tile-type--icon' && (
                 <div
                   className="cmp-mosaic-v2-tile cmp-mosaic-v2-tile--icon"
-                  style={{ backgroundColor: customColorA_change_11_12_2025 || undefined }}
+                  style={{ backgroundColor: customColorA || undefined }}
                   tabIndex={0}
                 >
                   <div className="cmp-mosaic-v2-tile__content">
@@ -132,7 +132,7 @@ export default function MosaicV2Page({
               {item.tiletype === 'tile-type--content' && (
                 <div
                   className="cmp-mosaic-v2-tile cmp-mosaic-v2-tile--content"
-                  style={{ backgroundColor: item.tileBgColor || customColorA_change_11_12_2025 || customColorB_change_11_12_2025 || undefined }}
+                  style={{ backgroundColor: item.tileBgColor || customColorA || customColorB || undefined }}
                 >
                   <div className="cmp-mosaic-v2-tile__heading-wrapper">
                     <div className="cmp-mosaic-v2-tile__heading">{item.heading}</div>
