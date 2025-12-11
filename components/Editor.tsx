@@ -535,7 +535,7 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
                       value={section.type}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                     >
-                      <option value="card">Card</option>
+                                            <option value="text">Text</option>
                       <option value="imagepage">Image Page</option>
                       <option value="authorpage">Author Page</option>
                       <option value="mosaicv2">Mosaic V2</option>
@@ -1104,6 +1104,7 @@ export default function Editor({ content, onSave, onCancel }: EditorProps) {
                     value={newSection.type}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                   >
+                    <option value="text">Text</option>
                     <option value="imagepage">Image Page</option>
                     <option value="authorpage">Author Page</option>
                     <option value="mosaicv2">Mosaic V2</option>
