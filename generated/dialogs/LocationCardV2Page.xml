@@ -52,11 +52,11 @@
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                         fieldLabel="Location Name"
                         name="./locationName"/>
-                    <addressLocations_change_11_12_2025
+                    <addressLocations
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldLabel="Address Locations change 11 12 2025"
-                        name="./addressLocations_change_11_12_2025"/>
+                        fieldLabel="Address Locations"
+                        name="./addressLocations"/>
                     <locationItems
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textarea"

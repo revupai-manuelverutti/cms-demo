@@ -22,7 +22,7 @@ interface LocationCardV2PageProps {
   lng: string;
   zoom?: string;
   locationName?: string;
-  addressLocations_change_11_12_2025?: string;
+  addressLocations?: string;
   locationItems?: LocationCardItem[];
   locationSubtitle?: string;
   openTooltip?: boolean | string;
@@ -42,7 +42,7 @@ export default function LocationCardV2Page({
   lng,
   zoom = '10',
   locationName,
-  addressLocations_change_11_12_2025: addressLocations_change_11_12_2025,
+  addressLocations: addressLocations,
   markerPin = '/etc.clientlibs/unsw-common/clientlibs/unsw-uds-assets/site/styles/src/assets/resources/icons/google-pin.svg',
   locationItems: items = [],
 }: LocationCardV2PageProps) {
@@ -81,10 +81,10 @@ export default function LocationCardV2Page({
           <div className="text-xs text-gray-500 dark:text-gray-400">Zoom: {Number.isFinite(zoomNum) ? zoomNum : '-'}</div>
 
           {/* Primary marker info */}
-          {(locationName || addressLocations_change_11_12_2025) && (
+          {(locationName || addressLocations) && (
             <div className="mt-3 text-sm text-gray-700 dark:text-gray-300">
               {locationName && <div className="font-semibold">{locationName}</div>}
-              {addressLocations_change_11_12_2025 && <div>{addressLocations_change_11_12_2025}</div>}
+              {addressLocations && <div>{addressLocations}</div>}
             </div>
           )}
         </div>

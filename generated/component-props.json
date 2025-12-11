@@ -393,7 +393,7 @@
         "rawType": "string"
       },
       {
-        "name": "addressLocations_change_11_12_2025",
+        "name": "addressLocations",
         "type": "string",
         "optional": true,
         "rawType": "string"
