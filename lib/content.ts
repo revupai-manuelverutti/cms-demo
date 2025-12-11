@@ -34,10 +34,8 @@ export interface ContentSection {
   clickTitle?: string;
   // For herobanner
   image?: string;
-  alt?: string;
   altValueFromDAM?: boolean | string;
   overlay?: boolean | string;
-  title?: string;
   articlePagePath?: string;
   articleDate?: string;
   showArticleDetails?: boolean | string;
