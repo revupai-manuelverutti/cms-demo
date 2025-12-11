@@ -45,11 +45,11 @@
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                         fieldLabel="Last Name"
                         name="./lastName"/>
-                    <authorTitle
+                    <authorTitle_change_11_12_2025
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldLabel="Author Title"
-                        name="./authorTitle"/>
+                        fieldLabel="Author Title change 11 12 2025"
+                        name="./authorTitle_change_11_12_2025"/>
                     <description
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
