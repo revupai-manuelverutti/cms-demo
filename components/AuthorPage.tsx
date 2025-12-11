@@ -8,7 +8,7 @@ interface AuthorPageProps {
   componentId: string;
   componentTitle: string;
   linkUrl?: string;
-  firstNamesssasiasjas?: string;
+  firstName?: string;
   lastName?: string;
   authorTitle?: string;
   description?: string;
@@ -25,7 +25,7 @@ export default function AuthorPage({
   componentId,
   componentTitle,
   linkUrl,
-  firstNamesssasiasjas: firstName,
+  firstName,
   lastName,
   authorTitle,
   description,
