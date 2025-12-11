@@ -191,7 +191,7 @@
         "rawType": "string"
       },
       {
-        "name": "componentTitle_change_11_12_2025",
+        "name": "componentTitle",
         "type": "string",
         "optional": false,
         "rawType": "string"
