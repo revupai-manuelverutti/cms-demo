@@ -39,7 +39,7 @@
         "rawType": "string"
       },
       {
-        "name": "authorTitle_change_11_12_2025",
+        "name": "authorTitle",
         "type": "string",
         "optional": true,
         "rawType": "string"
